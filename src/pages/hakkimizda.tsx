@@ -3,6 +3,7 @@ import Layout from '@/components/Layout';
 import { motion } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   FiTarget,
   FiUsers,
@@ -15,33 +16,35 @@ import {
 } from 'react-icons/fi';
 
 export default function Hakkimizda() {
+  const { t } = useLanguage();
+  
   const content = [
     {
-      text: "2020 yılında kurulan şirketimiz, pandeminin getirdiği kriz ortamında pratik ve ekonomik yazılım çözümleriyle büyük dalgalarla boğuşan işletmelerin online alışveriş ve tanıtım sorunlarına koşmuştur.",
+      text: t('about.story1'),
       highlight: false
     },
     {
-      text: "İşletmelere, güçlü, kalıcı ve ulaşılabilir yazılımlar üreterek, bütçelerini ana odaklarına yönlendirmelerini sağlamıştır.",
+      text: t('about.story2'),
       highlight: false
     },
     {
-      text: "Toplumun jenerasyon değişimlerini yakalayacak ürünleriyle etkin ticari başarılar elde etmelerini sağlamıştır.",
+      text: t('about.story3'),
       highlight: false
     },
     {
-      text: "Gerçek yöntemlerle günlük sorunları aşan web sayfaları, kısa sürede ticari engelleri aşan pratik yazılımlar, şirketleri bağımlılığa sürüklemeyen ürünlerle piyasa dostu çalışma yöntemini benimsemiştir.",
+      text: t('about.story4'),
       highlight: false
     },
     {
-      text: "YAKINBOĞAZ GARAJ PROJESİ DEĞİLDİR.",
+      text: t('about.story5'),
       highlight: true
     },
     {
-      text: "Kendi işindeki engelleri teknolojiye uygulayarak aşan gerçek iş insanlarının kurduğu bir sistemdir.",
+      text: t('about.story6'),
       highlight: false
     },
     {
-      text: "Yatırımcıları arasında eğitimci, hukukçu, mühendis, pazarlama uzmanı alanlarından gelen kendi alanında başarılı, kriz nedir bilen uzmanlar yer alır.",
+      text: t('about.story7'),
       highlight: false
     }
   ];
@@ -49,31 +52,31 @@ export default function Hakkimizda() {
   const values = [
     {
       icon: <FiTarget className="w-8 h-8" />,
-      title: "Hedef Odaklı",
-      description: "Müşteri hedeflerine ulaşmak için stratejik çözümler geliştiriyoruz."
+      title: t('about.goalOriented'),
+      description: t('about.goalOrientedDesc')
     },
     {
       icon: <FiZap className="w-8 h-8" />,
-      title: "Hızlı Çözümler",
-      description: "Pratik ve ekonomik çözümlerle hızlı sonuçlar elde ediyoruz."
+      title: t('about.fastSolutions'),
+      description: t('about.fastSolutionsDesc')
     },
     {
       icon: <FiShield className="w-8 h-8" />,
-      title: "Güvenilirlik",
-      description: "Kalıcı ve güvenilir yazılımlar üretiyoruz."
+      title: t('about.reliability'),
+      description: t('about.reliabilityDesc')
     },
     {
       icon: <FiUsers className="w-8 h-8" />,
-      title: "Uzman Ekip",
-      description: "Alanında deneyimli profesyonellerden oluşan ekibimiz."
+      title: t('about.expertTeam'),
+      description: t('about.expertTeamDesc')
     }
   ];
 
   const stats = [
-    { number: "4+", label: "Yıllık Deneyim", icon: <FiTrendingUp className="w-6 h-6" /> },
-    { number: "10+", label: "Başarılı Proje", icon: <FiAward className="w-6 h-6" /> },
-    { number: "5+", label: "Uzman Ekip", icon: <FiUsers className="w-6 h-6" /> },
-    { number: "24/7", label: "Teknik Destek", icon: <FiShield className="w-6 h-6" /> }
+    { number: "4+", label: t('home.statsExperience'), icon: <FiTrendingUp className="w-6 h-6" /> },
+    { number: "10+", label: t('home.statsTitle'), icon: <FiAward className="w-6 h-6" /> },
+    { number: "5+", label: t('home.statsTeam'), icon: <FiUsers className="w-6 h-6" /> },
+    { number: "24/7", label: t('home.statsSupport'), icon: <FiShield className="w-6 h-6" /> }
   ];
 
   return (
@@ -100,10 +103,10 @@ export default function Hakkimizda() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-                Hakkımızda
+                {t('about.title')}
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed px-4">
-                Dijital dönüşüm yolculuğunuzda güvenilir çözüm ortağınız
+                {t('about.subtitle')}
               </p>
             </motion.div>
           </div>
@@ -121,7 +124,7 @@ export default function Hakkimizda() {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-                  Hikayemiz
+                  {t('about.storyTitle')}
                 </h2>
               </motion.div>
               
@@ -162,10 +165,10 @@ export default function Hakkimizda() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-                Değerlerimiz
+                {t('about.valuesTitle')}
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-                Çalışma prensiplerimiz ve değerlerimiz
+                {t('about.valuesSubtitle')}
               </p>
             </motion.div>
             
@@ -236,21 +239,21 @@ export default function Hakkimizda() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-                Neden Bizi Seçmelisiniz?
+                {t('about.whyChooseTitle')}
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-                Farkımızı yaratan özelliklerimiz
+                {t('about.whyChooseSubtitle')}
               </p>
             </motion.div>
 
             <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               {[
-                "Gerçek iş insanları tarafından kurulmuş bir sistem",
-                "Kriz yönetiminde deneyimli uzman ekip",
-                "Piyasa dostu ve ekonomik çözümler",
-                "Bağımlılık yaratmayan bağımsız ürünler",
-                "Hızlı ve pratik çözümler",
-                "Güçlü ve kalıcı yazılımlar"
+                t('about.whyChoose1'),
+                t('about.whyChoose2'),
+                t('about.whyChoose3'),
+                t('about.whyChoose4'),
+                t('about.whyChoose5'),
+                t('about.whyChoose6')
               ].map((feature, index) => (
                 <motion.div
                   key={index}
@@ -279,7 +282,7 @@ export default function Hakkimizda() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                Bizimle Çalışmaya Hazır mısınız?
+                {t('about.ctaTitle')}
               </motion.h2>
               
               <motion.p 
@@ -289,8 +292,7 @@ export default function Hakkimizda() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Dijital dönüşüm yolculuğunuzda size rehberlik edelim. 
-                Uzman ekibimizle projenizi değerlendirelim.
+                {t('about.ctaDescription')}
               </motion.p>
               
               <motion.div
@@ -304,14 +306,14 @@ export default function Hakkimizda() {
                   href="/iletisim"
                   className="btn-primary inline-flex items-center justify-center space-x-2 text-base sm:text-lg px-8 sm:px-10 py-4"
                 >
-                  <span>İletişime Geçin</span>
+                  <span>{t('about.contactUs')}</span>
                   <FiArrowRight className="w-5 h-5" />
                 </Link>
                 <Link 
                   href="/dijital-cozumler"
                   className="btn-secondary inline-flex items-center justify-center space-x-2 text-base sm:text-lg px-8 sm:px-10 py-4"
                 >
-                  <span>Hizmetlerimizi İncele</span>
+                  <span>{t('about.viewServices')}</span>
                 </Link>
               </motion.div>
             </div>

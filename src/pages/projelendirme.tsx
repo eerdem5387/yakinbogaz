@@ -3,8 +3,10 @@ import Layout from '@/components/Layout';
 import { motion } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Projelendirme() {
+  const { t } = useLanguage();
   const services = [
     {
       id: "web-gelistirme",
@@ -130,27 +132,26 @@ export default function Projelendirme() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-                İşinizi Tepeden Tırnağa
+                {t('projects.title1')}
                 <span className="block bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                  Dijitalleştirelim
+                  {t('projects.title2')}
                 </span>
               </h1>
               <p className="text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed">
-                Modern teknolojilerle projelerinizi hayata geçiriyoruz. 
-                Web geliştirme, mobil uygulama ve özel yazılım çözümleri.
+                {t('projects.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
                   href="/iletisim"
                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  Ücretsiz Danışmanlık
+                  {t('projects.freeConsultation')}
                 </Link>
                 <Link 
                   href="#hizmetlerimiz"
                   className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
                 >
-                  Hizmetlerimizi İncele
+                  {t('projects.viewServices')}
                 </Link>
               </div>
             </motion.div>
@@ -168,10 +169,10 @@ export default function Projelendirme() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Hizmetlerimiz
+                {t('projects.servicesTitle')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Her projenin ihtiyacına özel, modern ve etkili çözümler
+                {t('projects.servicesSubtitle')}
               </p>
             </motion.div>
 
@@ -194,11 +195,11 @@ export default function Projelendirme() {
                       <p className="text-lg opacity-90 mb-6">{service.description}</p>
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
-                          <span className="opacity-75">Süre:</span>
+                          <span className="opacity-75">{t('projects.duration')}</span>
                           <div className="font-semibold">{service.timeline}</div>
                         </div>
                         <div>
-                          <span className="opacity-75">Fiyat:</span>
+                          <span className="opacity-75">{t('projects.price')}</span>
                           <div className="font-semibold">{service.price}</div>
                         </div>
                       </div>
@@ -209,7 +210,7 @@ export default function Projelendirme() {
                     <h3 className="text-3xl font-bold mb-4 text-gray-800">{service.title}</h3>
                     
                     <div className="mb-8">
-                      <h4 className="text-lg font-semibold mb-3 text-gray-800">Özellikler</h4>
+                      <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('projects.features')}</h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {service.features.map((feature, idx) => (
                           <div key={idx} className="flex items-center text-sm text-gray-700">
@@ -221,7 +222,7 @@ export default function Projelendirme() {
                     </div>
 
                     <div className="mb-8">
-                      <h4 className="text-lg font-semibold mb-3 text-gray-800">Kullanılan Teknolojiler</h4>
+                      <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('projects.technologiesUsed')}</h4>
                       <div className="flex flex-wrap gap-2">
                         {service.technologies.map((tech, idx) => (
                           <span key={idx} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
@@ -235,7 +236,7 @@ export default function Projelendirme() {
                       href="/iletisim"
                       className={`bg-gradient-to-r ${service.gradient} text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block`}
                     >
-                      Teklif Al
+                      {t('projects.getQuote')}
                     </Link>
                   </div>
                 </motion.div>
@@ -410,7 +411,7 @@ export default function Projelendirme() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                Projenizi Hayata Geçirelim
+                {t('projects.ctaTitle')}
               </motion.h2>
               
               <motion.p 
@@ -420,8 +421,7 @@ export default function Projelendirme() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Dijital dönüşüm yolculuğunuzda size rehberlik edelim. 
-                Uzman ekibimizle projenizi değerlendirelim.
+                {t('projects.ctaDescription')}
               </motion.p>
               
               <motion.div
@@ -435,13 +435,13 @@ export default function Projelendirme() {
                   href="/iletisim"
                   className="bg-white text-blue-600 px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  Ücretsiz Danışmanlık
+                  {t('projects.freeConsultation')}
                 </Link>
                 <Link 
                   href="/urunler"
                   className="border-2 border-white text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
                 >
-                  Ürünlerimizi İncele
+                  {t('projects.viewProducts')}
                 </Link>
               </motion.div>
             </div>

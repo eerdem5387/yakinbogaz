@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Urunler() {
+  const { t } = useLanguage();
   const products = [
     {
       id: "schoolroute",
@@ -116,11 +118,10 @@ export default function Urunler() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-                Ürünlerimiz
+                {t('products.title')}
               </h1>
               <p className="text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed">
-                Eğitim teknolojileri ve dijital çözümlerle geleceği şekillendiriyoruz. 
-                İnovatif ürünlerimizle tanışın.
+                {t('products.subtitle')}
               </p>
             </motion.div>
           </div>
@@ -137,10 +138,10 @@ export default function Urunler() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Eğitim Teknolojileri
+                {t('products.educationTechTitle')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Geleceğin eğitimini bugünden yaşayın
+                {t('products.educationTechSubtitle')}
               </p>
             </motion.div>
 
@@ -180,7 +181,7 @@ export default function Urunler() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                       <div>
-                        <h4 className="text-lg font-semibold mb-3 text-gray-800">Özellikler</h4>
+                        <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.features')}</h4>
                         <ul className="space-y-2">
                           {product.features.slice(0, 4).map((feature, idx) => (
                             <li key={idx} className="flex items-center text-sm text-gray-700">
@@ -191,7 +192,7 @@ export default function Urunler() {
                         </ul>
                       </div>
                       <div>
-                        <h4 className="text-lg font-semibold mb-3 text-gray-800">Faydalar</h4>
+                        <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.benefits')}</h4>
                         <ul className="space-y-2">
                           {product.benefits.map((benefit, idx) => (
                             <li key={idx} className="flex items-center text-sm text-gray-700">
@@ -208,7 +209,7 @@ export default function Urunler() {
                         href={product.demo}
                         className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 text-center"
                       >
-                        Demo İncele
+                        {t('products.viewDemo')}
                       </Link>
                       {product.appStore && (
                         <Link 

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import Seo from "@/components/Seo";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   FiGlobe, 
   FiShoppingCart, 
@@ -25,6 +26,7 @@ import {
 } from 'react-icons/fi';
 
 export default function Home() {
+  const { t } = useLanguage();
   return (
     <Layout>
       <Seo
@@ -85,7 +87,7 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                   >
                     <FiZap className="w-4 h-4" />
-                    <span>2020'den beri dijital çözümler</span>
+                    <span>{t('home.badge')}</span>
                   </motion.div>
                   
                   <motion.h1 
@@ -94,9 +96,9 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                   >
-                    Şirketinize Yönelik
+                    {t('home.heroTitle1')}
                     <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
-                      Dijital Çözümler
+                      {t('home.heroTitle2')}
                     </span>
                   </motion.h1>
                   
@@ -106,11 +108,7 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                   >
-                    Modern teknolojilerle işletmenizi geleceğe taşıyoruz. 
-                    <span className="font-semibold text-gray-800 dark:text-gray-200"> Web sayfaları</span>, 
-                    <span className="font-semibold text-gray-800 dark:text-gray-200"> e-ticaret</span> ve 
-                    <span className="font-semibold text-gray-800 dark:text-gray-200"> özel yazılımlar</span> ile 
-                    dijital dönüşümünüzü tamamlıyoruz.
+                    {t('home.heroDescription')}
                   </motion.p>
                   
                   <motion.div
@@ -123,7 +121,7 @@ export default function Home() {
                       href="/iletisim"
                       className="btn-primary flex items-center justify-center space-x-2 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
                     >
-                      <span>Ücretsiz Danışmanlık</span>
+                      <span>{t('home.freeConsultation')}</span>
                       <FiArrowRight className="w-5 h-5" />
                     </Link>
                     <Link 
@@ -131,7 +129,7 @@ export default function Home() {
                       className="btn-secondary flex items-center justify-center space-x-2 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
                     >
                       <FiPlay className="w-5 h-5" />
-                      <span>Projelerimizi İncele</span>
+                      <span>{t('home.viewProjects')}</span>
                     </Link>
                   </motion.div>
                 </motion.div>
@@ -154,13 +152,13 @@ export default function Home() {
                         >
                           <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
                             <FiGlobe className="text-2xl md:text-3xl mb-2" />
-                            <h3 className="font-semibold text-sm md:text-base mb-1">Web Sayfaları</h3>
-                            <p className="text-xs md:text-sm opacity-90">Modern tasarım</p>
+                            <h3 className="font-semibold text-sm md:text-base mb-1">{t('home.webPages')}</h3>
+                            <p className="text-xs md:text-sm opacity-90">{t('home.modernDesign')}</p>
                           </div>
                           <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
                             <FiShoppingCart className="text-2xl md:text-3xl mb-2" />
-                            <h3 className="font-semibold text-sm md:text-base mb-1">E-Ticaret</h3>
-                            <p className="text-xs md:text-sm opacity-90">Güvenli alışveriş</p>
+                            <h3 className="font-semibold text-sm md:text-base mb-1">{t('home.ecommerce')}</h3>
+                            <p className="text-xs md:text-sm opacity-90">{t('home.secureShopping')}</p>
                           </div>
                         </motion.div>
                         <motion.div 
@@ -171,13 +169,13 @@ export default function Home() {
                         >
                           <div className="bg-gradient-to-br from-pink-500 to-pink-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
                             <FiSmartphone className="text-2xl md:text-3xl mb-2" />
-                            <h3 className="font-semibold text-sm md:text-base mb-1">Mobil Uygulama</h3>
-                            <p className="text-xs md:text-sm opacity-90">Her platformda</p>
+                            <h3 className="font-semibold text-sm md:text-base mb-1">{t('home.mobileApp')}</h3>
+                            <p className="text-xs md:text-sm opacity-90">{t('home.everyPlatform')}</p>
                           </div>
                           <div className="bg-gradient-to-br from-green-500 to-green-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
                             <FiBookOpen className="text-2xl md:text-3xl mb-2" />
-                            <h3 className="font-semibold text-sm md:text-base mb-1">Eğitim</h3>
-                            <p className="text-xs md:text-sm opacity-90">MobilDers & SchoolRoute</p>
+                            <h3 className="font-semibold text-sm md:text-base mb-1">{t('home.education')}</h3>
+                            <p className="text-xs md:text-sm opacity-90">{t('home.mobildersSchoolroute')}</p>
                           </div>
                         </motion.div>
                       </div>
@@ -200,52 +198,52 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-                Şirketinize Yönelik 
+                {t('home.solutionsTitle1')} 
                 <span className="block bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                  Çözümler
+                  {t('home.solutionsTitle2')}
                 </span>
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-                İşletmenizin ihtiyaçlarına özel, modern ve etkili dijital çözümler sunuyoruz
+                {t('home.solutionsSubtitle')}
               </p>
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[
                 {
-                  title: "Web Sayfaları",
-                  description: "Modern, responsive ve SEO uyumlu web sayfaları tasarlıyoruz. Markanızı en iyi şekilde yansıtan profesyonel tasarımlar.",
+                  title: t('home.webPagesTitle'),
+                  description: t('home.webPagesDesc'),
                   icon: <FiGlobe className="w-8 h-8" />,
                   gradient: "from-blue-500 to-blue-600",
-                  features: ["Responsive Tasarım", "SEO Optimizasyonu", "Hızlı Yükleme"]
+                  features: [t('home.responsiveDesign'), t('home.seoOptimization'), t('home.fastLoading')]
                 },
                 {
-                  title: "Marka Tasarımları",
-                  description: "Markanızı öne çıkaracak, unutulmaz tasarım çözümleri. Logo, kurumsal kimlik ve görsel iletişim materyalleri.",
+                  title: t('home.brandDesignsTitle'),
+                  description: t('home.brandDesignsDesc'),
                   icon: <FiStar className="w-8 h-8" />,
                   gradient: "from-purple-500 to-purple-600",
-                  features: ["Logo Tasarımı", "Kurumsal Kimlik", "Görsel Materyaller"]
+                  features: [t('home.logoDesign'), t('home.corporateIdentity'), t('home.visualMaterials')]
                 },
                 {
-                  title: "E-Ticaret Hizmetleri",
-                  description: "Kapsamlı e-ticaret çözümleri ile online satışlarınızı artırın. Güvenli ödeme sistemleri ve stok yönetimi.",
+                  title: t('home.ecommerceServicesTitle'),
+                  description: t('home.ecommerceServicesDesc'),
                   icon: <FiShoppingCart className="w-8 h-8" />,
                   gradient: "from-pink-500 to-pink-600",
-                  features: ["Online Mağaza", "Ödeme Sistemleri", "Stok Yönetimi"]
+                  features: [t('home.onlineStore'), t('home.paymentSystems'), t('home.inventoryManagement')]
                 },
                 {
-                  title: "İşinize Özel Yazılımlar",
-                  description: "İhtiyaçlarınıza özel yazılım çözümleri geliştiriyoruz. İş süreçlerinizi otomatikleştirin ve verimliliğinizi artırın.",
+                  title: t('home.customSoftwareTitle'),
+                  description: t('home.customSoftwareDesc'),
                   icon: <FiCode className="w-8 h-8" />,
                   gradient: "from-green-500 to-green-600",
-                  features: ["Özel Geliştirme", "Süreç Otomasyonu", "Verimlilik Artışı"]
+                  features: [t('home.customDevelopment'), t('home.processAutomation'), t('home.efficiencyIncrease')]
                 },
                 {
-                  title: "Web'den Mobile",
-                  description: "Web uygulamalarınızı mobil cihazlara uyarlıyoruz. Her platformda mükemmel kullanıcı deneyimi.",
+                  title: t('home.webToMobileTitle'),
+                  description: t('home.webToMobileDesc'),
                   icon: <FiSmartphone className="w-8 h-8" />,
                   gradient: "from-orange-500 to-orange-600",
-                  features: ["Mobil Uyumluluk", "PWA Desteği", "Cross-Platform"]
+                  features: [t('home.mobileCompatibility'), t('home.pwaSupport'), t('home.crossPlatform')]
                 }
               ].map((service, index) => (
                 <motion.div
@@ -288,29 +286,29 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-                Eğitim Sektörüne Yönelik
+                {t('home.educationProductsTitle1')}
                 <span className="block bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                  İnovatif Ürünler
+                  {t('home.educationProductsTitle2')}
                 </span>
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-                Geleceğin eğitim teknolojilerini bugünden yaşayın
+                {t('home.educationProductsSubtitle')}
               </p>
             </motion.div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {[
                 {
-                  title: "SchoolRoute",
-                  description: "Okul Servis Yönetiminde, Kontrol Sizde",
-                  features: ["Gerçek Zamanlı Konum Takibi", "Rota Optimizasyonu ve Verimlilik", "Anlık Bildirimler ve Uyarılar", "Öğrenci ve Servis Güvenliği Takibi", "Veri Analizi ve Raporlama Özelliği"],
+                  title: t('home.schoolrouteTitle'),
+                  description: t('home.schoolrouteDesc'),
+                  features: [t('home.schoolrouteFeature1'), t('home.schoolrouteFeature2'), t('home.schoolrouteFeature3'), t('home.schoolrouteFeature4'), t('home.schoolrouteFeature5')],
                   color: "blue",
                   logo: "/img/scr-logo.png"
                 },
                 {
-                  title: "MobilDers",
-                  description: "Mobil eğitim platformu ile her yerde öğrenin. Video çözümler, interaktif testler ve kişiselleştirilmiş öğrenme.",
-                  features: ["Video Çözümler", "İnteraktif Testler", "Kişiselleştirilmiş Öğrenme"],
+                  title: t('home.mobildersTitle'),
+                  description: t('home.mobildersDesc'),
+                  features: [t('home.mobildersFeature1'), t('home.mobildersFeature2'), t('home.mobildersFeature3')],
                   color: "purple",
                   logo: "/img/mobilders.jpeg"
                 },
@@ -350,7 +348,7 @@ export default function Home() {
                       href={`/urunler#${product.title.toLowerCase()}`}
                       className={`bg-gradient-to-r from-${product.color}-500 to-${product.color}-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block flex items-center justify-center space-x-2 w-full`}
                     >
-                      <span>Detayları İncele</span>
+                      <span>{t('home.viewDetails')}</span>
                       <FiArrowRight className="w-5 h-5" />
                     </Link>
                   </div>
@@ -372,10 +370,10 @@ export default function Home() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {[
-                { number: "10+", text: "Başarılı Proje", icon: <FiAward className="w-6 md:w-8 h-6 md:h-8" /> },
-                { number: "5+", text: "Uzman Ekip", icon: <FiUsers className="w-6 md:w-8 h-6 md:h-8" /> },
-                { number: "24/7", text: "Teknik Destek", icon: <FiShield className="w-6 md:w-8 h-6 md:h-8" /> },
-                { number: "4+", text: "Yıllık Deneyim", icon: <FiTrendingUp className="w-6 md:w-8 h-6 md:h-8" /> }
+                { number: "10+", text: t('home.statsTitle'), icon: <FiAward className="w-6 md:w-8 h-6 md:h-8" /> },
+                { number: "5+", text: t('home.statsTeam'), icon: <FiUsers className="w-6 md:w-8 h-6 md:h-8" /> },
+                { number: "24/7", text: t('home.statsSupport'), icon: <FiShield className="w-6 md:w-8 h-6 md:h-8" /> },
+                { number: "4+", text: t('home.statsExperience'), icon: <FiTrendingUp className="w-6 md:w-8 h-6 md:h-8" /> }
               ].map((stat, index) => (
                 <motion.div 
                   key={index}
@@ -413,10 +411,10 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-                Referanslarımız
+                {t('home.referencesTitle')}
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-                Güvenilir çözüm ortağınız olarak hizmet verdiğimiz kurumlar
+                {t('home.referencesSubtitle')}
               </p>
             </motion.div>
             
@@ -456,9 +454,9 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                Projeniz için 
+                {t('home.ctaTitle1')} 
                 <span className="block bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                  Ücretsiz Danışmanlık
+                  {t('home.ctaTitle2')}
                 </span>
               </motion.h2>
               
@@ -469,8 +467,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Dijital dönüşüm yolculuğunuzda size rehberlik edelim. 
-                Uzman ekibimizle projenizi değerlendirelim.
+                {t('home.ctaDescription')}
               </motion.p>
               
               <motion.div
@@ -483,7 +480,7 @@ export default function Home() {
                   href="/iletisim"
                   className="btn-primary inline-flex items-center justify-center space-x-2 text-base sm:text-lg px-8 sm:px-10 py-4"
                 >
-                  <span>Hemen Başlayın</span>
+                  <span>{t('home.getStarted')}</span>
                   <FiArrowRight className="w-5 h-5" />
                 </Link>
               </motion.div>

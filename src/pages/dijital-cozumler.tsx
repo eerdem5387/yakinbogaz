@@ -3,8 +3,10 @@ import Layout from '@/components/Layout';
 import { motion } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function DijitalCozumler() {
+  const { t } = useLanguage();
   const services = [
     {
       title: "Web Sayfaları",
@@ -111,24 +113,23 @@ export default function DijitalCozumler() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-                Dijital Çözümler
+                {t('solutions.title')}
               </h1>
               <p className="text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed">
-                İşletmenizin dijital dönüşümü için kapsamlı çözümler sunuyoruz. 
-                Modern teknolojilerle geleceğe hazır olun.
+                {t('solutions.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
                   href="/iletisim"
                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  Ücretsiz Danışmanlık
+                  {t('solutions.freeConsultation')}
                 </Link>
                 <Link 
                   href="/projelendirme"
                   className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
                 >
-                  Projelerimizi İncele
+                  {t('solutions.viewProjects')}
                 </Link>
               </div>
             </motion.div>
@@ -146,10 +147,10 @@ export default function DijitalCozumler() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Hizmetlerimiz
+                {t('solutions.servicesTitle')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Her işletmenin ihtiyacına özel, modern ve etkili dijital çözümler
+                {t('solutions.servicesSubtitle')}
               </p>
             </motion.div>
 
@@ -176,7 +177,7 @@ export default function DijitalCozumler() {
                   </div>
                   
                   <div className="p-8">
-                    <h4 className="text-lg font-semibold mb-4 text-gray-800">Özellikler</h4>
+                    <h4 className="text-lg font-semibold mb-4 text-gray-800">{t('solutions.features')}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
                       {service.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center text-sm text-gray-700">
@@ -191,13 +192,13 @@ export default function DijitalCozumler() {
                         href="/iletisim"
                         className={`bg-gradient-to-r ${service.gradient} text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex-1 text-center`}
                       >
-                        Teklif Al
+                        {t('solutions.getQuote')}
                       </Link>
                       <Link 
                         href={`/projelendirme#${service.title.toLowerCase().replace(/\s+/g, '-')}`}
                         className="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300 flex-1 text-center"
                       >
-                        Detaylar
+                        {t('solutions.details')}
                       </Link>
                     </div>
                   </div>
@@ -218,10 +219,10 @@ export default function DijitalCozumler() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                Çalışma Sürecimiz
+                {t('solutions.processTitle')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Projelerinizi başarıyla tamamlamak için izlediğimiz adımlar
+                {t('solutions.processSubtitle')}
               </p>
             </motion.div>
 
@@ -332,7 +333,7 @@ export default function DijitalCozumler() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                Projenizi Hayata Geçirelim
+                {t('solutions.ctaTitle')}
               </motion.h2>
               
               <motion.p 
@@ -342,8 +343,7 @@ export default function DijitalCozumler() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Dijital dönüşüm yolculuğunuzda size rehberlik edelim. 
-                Uzman ekibimizle projenizi değerlendirelim.
+                {t('solutions.ctaDescription')}
               </motion.p>
               
               <motion.div
@@ -357,13 +357,13 @@ export default function DijitalCozumler() {
                   href="/iletisim"
                   className="bg-white text-blue-600 px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  Ücretsiz Danışmanlık
+                  {t('solutions.freeConsultation')}
                 </Link>
                 <Link 
                   href="/projelendirme"
                   className="border-2 border-white text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
                 >
-                  Projelerimizi İncele
+                  {t('solutions.viewProjects')}
                 </Link>
               </motion.div>
             </div>
