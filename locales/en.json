@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "solutions": "Digital Solutions",
+    "products": "Products",
+    "projects": "Project Planning",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get free consultation for your projects. Meet our expert team and start your digital transformation journey.",
+    "sendMessage": "Send Message",
+    "contactInfo": "Contact Information",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "serviceType": "Service Type",
+    "selectService": "Select service",
+    "message": "Your Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "sent": "Your message has been sent successfully!",
+    "address": "Address",
+    "workingHours": "Working Hours",
+    "workingHoursWeek": "Monday - Friday: 09:00 - 18:00",
+    "workingHoursSat": "Saturday: 09:00 - 14:00",
+    "socialMedia": "Social Media"
+  },
+  "common": {
+    "required": "*",
+    "namePlaceholder": "Your name and surname",
+    "emailPlaceholder": "example@email.com",
+    "phonePlaceholder": "+90 5XX XXX XX XX",
+    "companyPlaceholder": "Your company name",
+    "messagePlaceholder": "Share details about your project..."
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "services": "Our Services",
+    "allRightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy"
+  }
+}
+

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   FiMenu, 
   FiX, 
@@ -21,6 +22,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme, isTransitioning } = useTheme();
+  const { language, setLanguage } = useLanguage();
   const router = useRouter();
 
   useEffect(() => {
@@ -35,13 +37,15 @@ export default function Navbar() {
     setIsMenuOpen(false);
   }, [router.pathname]);
 
+  const { t } = useLanguage();
+  
   const menuItems = [
-    { href: '/', label: 'Ana Sayfa', icon: FiHome },
-    { href: '/hakkimizda', label: 'Hakkımızda', icon: FiBookOpen },
-    { href: '/dijital-cozumler', label: 'Dijital Çözümler', icon: FiCode },
-    { href: '/urunler', label: 'Ürünler', icon: FiGlobe },
-    { href: '/projelendirme', label: 'Projelendirme', icon: FiSmartphone },
-    { href: '/iletisim', label: 'İletişim', icon: FiShoppingCart },
+    { href: '/', label: t('nav.home'), icon: FiHome },
+    { href: '/hakkimizda', label: t('nav.about'), icon: FiBookOpen },
+    { href: '/dijital-cozumler', label: t('nav.solutions'), icon: FiCode },
+    { href: '/urunler', label: t('nav.products'), icon: FiGlobe },
+    { href: '/projelendirme', label: t('nav.projects'), icon: FiSmartphone },
+    { href: '/iletisim', label: t('nav.contact'), icon: FiShoppingCart },
   ];
 
   const isActive = (href: string) => {
@@ -117,6 +121,36 @@ export default function Navbar() {
               );
             })}
             
+            {/* Language Toggle */}
+            <motion.div
+              className="relative ml-4 flex items-center space-x-1 bg-gray-100 dark:bg-gray-800 rounded-xl p-1"
+            >
+              <motion.button
+                onClick={() => setLanguage('tr')}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  language === 'tr'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                TR
+              </motion.button>
+              <motion.button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  language === 'en'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ENG
+              </motion.button>
+            </motion.div>
+            
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
@@ -158,6 +192,34 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center space-x-3">
+            {/* Language Toggle */}
+            <motion.div
+              className="relative flex items-center space-x-1 bg-gray-100 dark:bg-gray-800 rounded-xl p-1"
+            >
+              <motion.button
+                onClick={() => setLanguage('tr')}
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
+                  language === 'tr'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-gray-600 dark:text-gray-300'
+                }`}
+                whileTap={{ scale: 0.95 }}
+              >
+                TR
+              </motion.button>
+              <motion.button
+                onClick={() => setLanguage('en')}
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
+                  language === 'en'
+                    ? 'bg-blue-600 text-white shadow-md'
+                    : 'text-gray-600 dark:text-gray-300'
+                }`}
+                whileTap={{ scale: 0.95 }}
+              >
+                ENG
+              </motion.button>
+            </motion.div>
+            
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}

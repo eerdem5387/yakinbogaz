@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "solutions": "Dijital Çözümler",
+    "products": "Ürünler",
+    "projects": "Projelendirme",
+    "contact": "İletişim"
+  },
+  "contact": {
+    "title": "İletişime Geçin",
+    "subtitle": "Projeleriniz için ücretsiz danışmanlık alın. Uzman ekibimizle tanışın ve dijital dönüşüm yolculuğunuza başlayın.",
+    "sendMessage": "Mesaj Gönderin",
+    "contactInfo": "İletişim Bilgileri",
+    "name": "Ad Soyad",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "company": "Şirket",
+    "serviceType": "Hizmet Türü",
+    "selectService": "Hizmet seçiniz",
+    "message": "Mesajınız",
+    "send": "Mesaj Gönder",
+    "sending": "Gönderiliyor...",
+    "sent": "Mesajınız başarıyla gönderildi!",
+    "address": "Adres",
+    "workingHours": "Çalışma Saatleri",
+    "workingHoursWeek": "Pazartesi - Cuma: 09:00 - 18:00",
+    "workingHoursSat": "Cumartesi: 09:00 - 14:00",
+    "socialMedia": "Sosyal Medya"
+  },
+  "common": {
+    "required": "*",
+    "namePlaceholder": "Adınız ve soyadınız",
+    "emailPlaceholder": "ornek@email.com",
+    "phonePlaceholder": "+90 5XX XXX XX XX",
+    "companyPlaceholder": "Şirket adınız",
+    "messagePlaceholder": "Projeniz hakkında detayları paylaşın..."
+  },
+  "footer": {
+    "quickLinks": "Hızlı Erişim",
+    "services": "Hizmetlerimiz",
+    "allRightsReserved": "Tüm hakları saklıdır.",
+    "privacyPolicy": "Gizlilik Politikası"
+  }
+}
+

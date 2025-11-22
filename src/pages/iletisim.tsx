@@ -3,6 +3,7 @@ import Layout from '@/components/Layout';
 import { motion } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   FiMail, 
   FiPhone, 
@@ -15,6 +16,7 @@ import {
 } from 'react-icons/fi';
 
 export default function Iletisim() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -69,11 +71,10 @@ export default function Iletisim() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-                İletişime Geçin
+                {t('contact.title')}
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed px-4">
-                Projeleriniz için ücretsiz danışmanlık alın. 
-                Uzman ekibimizle tanışın ve dijital dönüşüm yolculuğunuza başlayın.
+                {t('contact.subtitle')}
               </p>
             </motion.div>
           </div>
@@ -91,13 +92,13 @@ export default function Iletisim() {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-gray-800 dark:text-white">
-                  Mesaj Gönderin
+                  {t('contact.sendMessage')}
                 </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Ad Soyad *
+                        {t('contact.name')} {t('common.required')}
                       </label>
                       <input
                         type="text"
@@ -105,12 +106,12 @@ export default function Iletisim() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                        placeholder="Adınız ve soyadınız"
+                        placeholder={t('common.namePlaceholder')}
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        E-posta *
+                        {t('contact.email')} {t('common.required')}
                       </label>
                       <input
                         type="email"
@@ -118,47 +119,47 @@ export default function Iletisim() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                        placeholder="ornek@email.com"
+                        placeholder={t('common.emailPlaceholder')}
                       />
                     </div>
                   </div>
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Telefon
+                      {t('contact.phone')}
                     </label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                      placeholder="+90 5XX XXX XX XX"
+                      placeholder={t('common.phonePlaceholder')}
                     />
                   </div>
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Şirket
+                      {t('contact.company')}
                     </label>
                     <input
                       type="text"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                      placeholder="Şirket adınız"
+                      placeholder={t('common.companyPlaceholder')}
                     />
                   </div>
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Hizmet Türü
+                      {t('contact.serviceType')}
                     </label>
                     <select 
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                     >
-                      <option value="">Hizmet seçiniz</option>
+                      <option value="">{t('contact.selectService')}</option>
                       <option value="web">Web Sayfası</option>
                       <option value="ecommerce">E-Ticaret</option>
                       <option value="mobile">Mobil Uygulama</option>
@@ -170,7 +171,7 @@ export default function Iletisim() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Mesajınız *
+                      {t('contact.message')} {t('common.required')}
                     </label>
                     <textarea
                       required
@@ -178,7 +179,7 @@ export default function Iletisim() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                      placeholder="Projeniz hakkında detayları paylaşın..."
+                      placeholder={t('common.messagePlaceholder')}
                     ></textarea>
                   </div>
                   
@@ -189,7 +190,7 @@ export default function Iletisim() {
                       className="flex items-center space-x-2 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 p-4 rounded-xl"
                     >
                       <FiCheckCircle className="w-5 h-5" />
-                      <span>Mesajınız başarıyla gönderildi!</span>
+                      <span>{t('contact.sent')}</span>
                     </motion.div>
                   )}
                   
@@ -203,12 +204,12 @@ export default function Iletisim() {
                     {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        <span>Gönderiliyor...</span>
+                        <span>{t('contact.sending')}</span>
                       </>
                     ) : (
                       <>
                         <FiSend className="w-5 h-5" />
-                        <span>Mesaj Gönder</span>
+                        <span>{t('contact.send')}</span>
                       </>
                     )}
                   </motion.button>
@@ -223,7 +224,7 @@ export default function Iletisim() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-gray-800 dark:text-white">
-                  İletişim Bilgileri
+                  {t('contact.contactInfo')}
                 </h2>
                 
                 <div className="space-y-6 md:space-y-8">
@@ -256,12 +257,12 @@ export default function Iletisim() {
                         <FiPhone className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-base md:text-lg">Telefon</h4>
-                        <a href="tel:+90212XXX" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 block text-sm md:text-base">
-                          +90 212 XXX XX XX
+                        <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-base md:text-lg">{t('contact.phone')}</h4>
+                        <a href="tel:+904642171555" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 block text-sm md:text-base">
+                          0464 217 15 55
                         </a>
-                        <a href="tel:+90532XXX" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 block text-sm md:text-base">
-                          +90 532 XXX XX XX
+                        <a href="tel:+905322906455" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 block text-sm md:text-base">
+                          0532 290 64 55
                         </a>
                       </div>
                     </motion.div>
@@ -292,10 +293,10 @@ export default function Iletisim() {
                         <FiMapPin className="w-6 h-6 text-green-600 dark:text-green-400" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-base md:text-lg">Adres</h4>
+                        <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-base md:text-lg">{t('contact.address')}</h4>
                         <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base">
-                          İstanbul, Türkiye<br />
-                          [Detaylı adres bilgisi]
+                          KANBURSIRT FABRİKA SOK NO 24<br />
+                          RİZE, TÜRKİYE
                         </p>
                       </div>
                     </motion.div>
@@ -308,16 +309,16 @@ export default function Iletisim() {
                         <FiClock className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-base md:text-lg">Çalışma Saatleri</h4>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base">Pazartesi - Cuma: 09:00 - 18:00</p>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base">Cumartesi: 09:00 - 14:00</p>
+                        <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-base md:text-lg">{t('contact.workingHours')}</h4>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base">{t('contact.workingHoursWeek')}</p>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base">{t('contact.workingHoursSat')}</p>
                       </div>
                     </motion.div>
                   </div>
 
                   {/* Social Media */}
                   <div>
-                    <h4 className="font-semibold text-gray-800 dark:text-white mb-4 text-base md:text-lg">Sosyal Medya</h4>
+                    <h4 className="font-semibold text-gray-800 dark:text-white mb-4 text-base md:text-lg">{t('contact.socialMedia')}</h4>
                     <div className="flex space-x-4">
                       {[
                         { 
