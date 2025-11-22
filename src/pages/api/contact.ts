@@ -87,17 +87,31 @@ function createTransporter() {
     throw new Error('SMTP environment variables are not properly configured');
   }
 
+  const portNumber = parseInt(port);
+  const isSecure = portNumber === 465;
+
+  // Node.js constants modülünü import et
+  const constants = require('constants');
+
   return nodemailer.createTransport({
     host: host,
-    port: parseInt(port),
-    secure: port === '465', // Port 465 için SSL
+    port: portNumber,
+    secure: isSecure, // Port 465 için SSL
     auth: {
       user: user,
       pass: pass,
     },
     tls: {
-      rejectUnauthorized: false, // Natro için gerekli olabilir
+      rejectUnauthorized: false, // Natro için gerekli
+      // Eski SSL renegotiation desteği için
+      secureOptions: constants.SSL_OP_LEGACY_SERVER_CONNECT,
+      minVersion: 'TLSv1', // Minimum TLS versiyonu
     },
+    // Connection timeout ayarları
+    socketTimeout: 10000,
+    connectionTimeout: 10000,
+    // Eski sunucularla uyumluluk için
+    requireTLS: false,
   });
 }
 
@@ -179,7 +193,25 @@ export default async function handler(
     }
 
     // SMTP transporter oluştur
-    const transporter = createTransporter();
+    let transporter;
+    try {
+      transporter = createTransporter();
+      // SMTP bağlantısını test et
+      await transporter.verify();
+    } catch (smtpError) {
+      console.error('SMTP Connection Error:', smtpError);
+      const smtpErrorMessage = smtpError instanceof Error ? smtpError.message : 'SMTP connection failed';
+      console.error('SMTP Config Check:', {
+        host: process.env.SMTP_HOST || 'MISSING',
+        port: process.env.SMTP_PORT || 'MISSING',
+        user: process.env.SMTP_USER || 'MISSING',
+        pass: process.env.SMTP_PASS ? '***' : 'MISSING',
+      });
+      return res.status(500).json({
+        success: false,
+        message: 'Email servisi yapılandırma hatası. Lütfen site yöneticisi ile iletişime geçin.',
+      });
+    }
 
     // Email içeriği oluştur
     const recipientEmail = process.env.CONTACT_EMAIL || process.env.SMTP_USER || 'info@yakinbogaz.com';
@@ -394,37 +426,83 @@ Bu mesaj yakinbogaz.com web sitesindeki iletişim formundan gönderilmiştir.
     };
 
     // Email gönder
-    await transporter.sendMail(mailOptions);
+    try {
+      const info = await transporter.sendMail(mailOptions);
+      console.log('Email sent successfully:', {
+        messageId: info.messageId,
+        to: recipientEmail,
+        from: mailOptions.from,
+      });
+    } catch (sendError) {
+      console.error('Email send error:', sendError);
+      const sendErrorMessage = sendError instanceof Error ? sendError.message : 'Unknown send error';
+      console.error('Send error details:', {
+        error: sendErrorMessage,
+        code: (sendError as any)?.code,
+        command: (sendError as any)?.command,
+        response: (sendError as any)?.response,
+      });
+      throw sendError;
+    }
 
     return res.status(200).json({
       success: true,
       message: 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.',
     });
   } catch (error) {
-    console.error('Contact form error:', error);
-    
-    // Daha detaylı hata mesajı (development için)
+    // Detaylı hata loglama
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorStack = error instanceof Error ? error.stack : undefined;
+    const errorCode = (error as any)?.code;
+    const errorResponse = (error as any)?.response;
+    
+    console.error('=== Contact Form Error ===');
+    console.error('Error Message:', errorMessage);
+    console.error('Error Code:', errorCode);
+    console.error('Error Stack:', errorStack);
+    if (errorResponse) {
+      console.error('Error Response:', errorResponse);
+    }
+    console.error('Environment Check:', {
+      SMTP_HOST: process.env.SMTP_HOST ? '✓ Set' : '✗ Missing',
+      SMTP_PORT: process.env.SMTP_PORT ? '✓ Set' : '✗ Missing',
+      SMTP_USER: process.env.SMTP_USER ? '✓ Set' : '✗ Missing',
+      SMTP_PASS: process.env.SMTP_PASS ? '✓ Set' : '✗ Missing',
+      CONTACT_EMAIL: process.env.CONTACT_EMAIL ? '✓ Set' : '✗ Missing',
+      RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY ? '✓ Set' : '✗ Missing',
+    });
+    console.error('=======================');
+    
     const isDevelopment = process.env.NODE_ENV === 'development';
     
     // SMTP hatası kontrolü
-    if (errorMessage.includes('SMTP') || errorMessage.includes('transporter') || errorMessage.includes('authentication')) {
-      console.error('SMTP Configuration Error:', {
-        host: process.env.SMTP_HOST ? 'Set' : 'Missing',
-        port: process.env.SMTP_PORT ? 'Set' : 'Missing',
-        user: process.env.SMTP_USER ? 'Set' : 'Missing',
-        pass: process.env.SMTP_PASS ? 'Set' : 'Missing',
-      });
+    if (
+      errorMessage.includes('SMTP') || 
+      errorMessage.includes('transporter') || 
+      errorMessage.includes('authentication') ||
+      errorMessage.includes('ECONNREFUSED') ||
+      errorMessage.includes('ETIMEDOUT') ||
+      errorCode === 'EAUTH' ||
+      errorCode === 'ECONNECTION'
+    ) {
       return res.status(500).json({
         success: false,
         message: 'Email gönderim servisi yapılandırma hatası. Lütfen site yöneticisi ile iletişime geçin.',
       });
     }
     
+    // reCAPTCHA hatası
+    if (errorMessage.includes('reCAPTCHA') || errorMessage.includes('recaptcha')) {
+      return res.status(500).json({
+        success: false,
+        message: 'Güvenlik doğrulaması hatası. Lütfen tekrar deneyin.',
+      });
+    }
+    
     return res.status(500).json({
       success: false,
       message: isDevelopment 
-        ? `Bir hata oluştu: ${errorMessage}` 
+        ? `Bir hata oluştu: ${errorMessage}${errorCode ? ` (Code: ${errorCode})` : ''}` 
         : 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan email gönderin.',
     });
   }
