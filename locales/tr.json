@@ -226,7 +226,8 @@
     "workingHours": "Çalışma Saatleri",
     "workingHoursWeek": "Pazartesi - Cuma: 09:00 - 18:00",
     "workingHoursSat": "Cumartesi: 09:00 - 14:00",
-    "socialMedia": "Sosyal Medya"
+    "socialMedia": "Sosyal Medya",
+    "popupMessage": "Mesajınız başarıyla alındı. En kısa sürede size dönüş yapacağız."
   },
   "common": {
     "required": "*",

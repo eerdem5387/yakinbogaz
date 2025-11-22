@@ -123,14 +123,14 @@ export default function Navbar() {
             
             {/* Language Toggle */}
             <motion.div
-              className="relative ml-4 flex items-center space-x-1 bg-gray-100 dark:bg-gray-800 rounded-xl p-1"
+              className="relative ml-4 flex items-center space-x-1 bg-gray-100 dark:bg-gray-800 rounded-xl p-1 border border-gray-200 dark:border-gray-700"
             >
               <motion.button
                 onClick={() => setLanguage('tr')}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 ${
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 min-w-[45px] ${
                   language === 'tr'
                     ? 'bg-blue-600 text-white shadow-md'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -139,10 +139,10 @@ export default function Navbar() {
               </motion.button>
               <motion.button
                 onClick={() => setLanguage('en')}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 ${
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 min-w-[45px] ${
                   language === 'en'
                     ? 'bg-blue-600 text-white shadow-md'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -194,14 +194,14 @@ export default function Navbar() {
           <div className="lg:hidden flex items-center space-x-3">
             {/* Language Toggle */}
             <motion.div
-              className="relative flex items-center space-x-1 bg-gray-100 dark:bg-gray-800 rounded-xl p-1"
+              className="relative flex items-center space-x-1 bg-gray-100 dark:bg-gray-800 rounded-xl p-1 border border-gray-200 dark:border-gray-700"
             >
               <motion.button
                 onClick={() => setLanguage('tr')}
-                className={`px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-300 min-w-[40px] ${
                   language === 'tr'
                     ? 'bg-blue-600 text-white shadow-md'
-                    : 'text-gray-600 dark:text-gray-300'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
                 whileTap={{ scale: 0.95 }}
               >
@@ -209,10 +209,10 @@ export default function Navbar() {
               </motion.button>
               <motion.button
                 onClick={() => setLanguage('en')}
-                className={`px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-300 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-300 min-w-[40px] ${
                   language === 'en'
                     ? 'bg-blue-600 text-white shadow-md'
-                    : 'text-gray-600 dark:text-gray-300'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
                 whileTap={{ scale: 0.95 }}
               >

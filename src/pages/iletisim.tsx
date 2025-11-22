@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Layout from '@/components/Layout';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { 
   FiMail, 
   FiPhone, 
@@ -12,11 +13,13 @@ import {
   FiLinkedin,
   FiInstagram,
   FiSend,
-  FiCheckCircle
+  FiCheckCircle,
+  FiAlertCircle
 } from 'react-icons/fi';
 
 export default function Iletisim() {
   const { t } = useLanguage();
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,14 +30,45 @@ export default function Iletisim() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    try {
+      // reCAPTCHA token al
+      const recaptchaToken = recaptchaRef.current?.getValue();
+      
+      if (!recaptchaToken && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
+        setError('Lütfen reCAPTCHA doğrulamasını tamamlayın.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // API'ye gönder
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken: recaptchaToken || undefined,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Bir hata oluştu. Lütfen tekrar deneyin.');
+      }
+
+      // Başarılı
       setIsSubmitted(true);
+      setShowSuccessPopup(true);
       setFormData({
         name: '',
         email: '',
@@ -43,8 +77,24 @@ export default function Iletisim() {
         service: '',
         message: ''
       });
-      setTimeout(() => setIsSubmitted(false), 5000);
-    }, 1500);
+      
+      // reCAPTCHA'yı sıfırla
+      recaptchaRef.current?.reset();
+      
+      // Form içindeki başarı mesajını 5 saniye sonra kaldır
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+      
+      // Pop-up'ı 4 saniye sonra kaldır
+      setTimeout(() => {
+        setShowSuccessPopup(false);
+      }, 4000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Bir hata oluştu. Lütfen tekrar deneyin.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -183,6 +233,19 @@ export default function Iletisim() {
                     ></textarea>
                   </div>
                   
+                  {/* Error Message */}
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center space-x-2 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 p-4 rounded-xl"
+                    >
+                      <FiAlertCircle className="w-5 h-5 flex-shrink-0" />
+                      <span>{error}</span>
+                    </motion.div>
+                  )}
+
+                  {/* Success Message */}
                   {isSubmitted && (
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
@@ -192,6 +255,17 @@ export default function Iletisim() {
                       <FiCheckCircle className="w-5 h-5" />
                       <span>{t('contact.sent')}</span>
                     </motion.div>
+                  )}
+
+                  {/* reCAPTCHA */}
+                  {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+                    <div className="flex justify-center">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                        theme="light"
+                      />
+                    </div>
                   )}
                   
                   <motion.button
@@ -464,6 +538,68 @@ export default function Iletisim() {
           </div>
         </section>
       </main>
+
+      {/* Success Pop-up Toast */}
+      <AnimatePresence>
+        {showSuccessPopup && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed bottom-6 right-6 z-[100] max-w-md w-full mx-4"
+          >
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-6 relative overflow-hidden">
+              {/* Gradient Background */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600"></div>
+              
+              {/* Content */}
+              <div className="flex items-start space-x-4">
+                {/* Success Icon */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  className="flex-shrink-0"
+                >
+                  <div className="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg">
+                    <FiCheckCircle className="w-8 h-8 text-white" />
+                  </div>
+                </motion.div>
+                
+                {/* Message */}
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                    {t('contact.sent')}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    {t('contact.popupMessage')}
+                  </p>
+                </div>
+                
+                {/* Close Button */}
+                <button
+                  onClick={() => setShowSuccessPopup(false)}
+                  className="flex-shrink-0 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                  aria-label="Kapat"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              {/* Progress Bar */}
+              <motion.div
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 4, ease: "linear" }}
+                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Layout>
   );
 }

@@ -226,7 +226,8 @@
     "workingHours": "Working Hours",
     "workingHoursWeek": "Monday - Friday: 09:00 - 18:00",
     "workingHoursSat": "Saturday: 09:00 - 14:00",
-    "socialMedia": "Social Media"
+    "socialMedia": "Social Media",
+    "popupMessage": "Your message has been received successfully. We will get back to you as soon as possible."
   },
   "common": {
     "required": "*",
