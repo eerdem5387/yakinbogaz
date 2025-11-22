@@ -76,16 +76,42 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
   }
 }
 
-// SMTP transporter oluştur
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || 'mail.kurumsaleposta.com',
-  port: parseInt(process.env.SMTP_PORT || '465'),
-  secure: true, // Port 465 için SSL
-  auth: {
-    user: process.env.SMTP_USER || 'info@yakinbogaz.com',
-    pass: process.env.SMTP_PASS || '4-RK97CNpzg--c0.',
-  },
-});
+// SMTP transporter oluşturma fonksiyonu
+function createTransporter() {
+  const host = process.env.SMTP_HOST;
+  const port = process.env.SMTP_PORT;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+
+  if (!host || !port || !user || !pass) {
+    throw new Error('SMTP environment variables are not properly configured');
+  }
+
+  return nodemailer.createTransport({
+    host: host,
+    port: parseInt(port),
+    secure: port === '465', // Port 465 için SSL
+    auth: {
+      user: user,
+      pass: pass,
+    },
+    tls: {
+      rejectUnauthorized: false, // Natro için gerekli olabilir
+    },
+  });
+}
+
+// XSS koruması için HTML escape
+function escapeHtml(text: string): string {
+  const map: { [key: string]: string } = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
 
 type ContactFormData = {
   name: string;
@@ -152,8 +178,11 @@ export default async function handler(
       }
     }
 
+    // SMTP transporter oluştur
+    const transporter = createTransporter();
+
     // Email içeriği oluştur
-    const recipientEmail = process.env.CONTACT_EMAIL || 'info@yakinbogaz.com';
+    const recipientEmail = process.env.CONTACT_EMAIL || process.env.SMTP_USER || 'info@yakinbogaz.com';
     
     // Hizmet türü çevirisi
     const serviceLabels: { [key: string]: string } = {
@@ -164,10 +193,17 @@ export default async function handler(
       'design': 'Marka Tasarımı',
       'other': 'Diğer'
     };
-    const serviceLabel = service ? (serviceLabels[service] || service) : 'Genel İletişim';
+    const serviceLabel = service ? (serviceLabels[service] || escapeHtml(service)) : 'Genel İletişim';
+    
+    // XSS koruması için input'ları temizle
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = phone ? escapeHtml(phone) : '';
+    const safeCompany = company ? escapeHtml(company) : '';
+    const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
     
     const mailOptions = {
-      from: `"YakınBoğaz Software" <${process.env.SMTP_USER || 'info@yakinbogaz.com'}>`,
+      from: `"YakınBoğaz Software" <${process.env.SMTP_USER}>`,
       to: recipientEmail,
       replyTo: email,
       subject: `📧 Yeni İletişim Formu Mesajı - ${serviceLabel}`,
@@ -220,7 +256,7 @@ export default async function handler(
                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                           <td width="120" style="color: #718096; font-size: 14px; font-weight: 500;">Ad Soyad:</td>
-                          <td style="color: #2d3748; font-size: 15px; font-weight: 600;">${name}</td>
+                          <td style="color: #2d3748; font-size: 15px; font-weight: 600;">${safeName}</td>
                         </tr>
                       </table>
                     </td>
@@ -231,34 +267,34 @@ export default async function handler(
                         <tr>
                           <td width="120" style="color: #718096; font-size: 14px; font-weight: 500;">Email:</td>
                           <td>
-                            <a href="mailto:${email}" style="color: #667eea; font-size: 15px; font-weight: 600; text-decoration: none;">${email}</a>
+                            <a href="mailto:${safeEmail}" style="color: #667eea; font-size: 15px; font-weight: 600; text-decoration: none;">${safeEmail}</a>
                             <span style="display: inline-block; margin-left: 8px; background: #667eea; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">Yanıtla</span>
                           </td>
                         </tr>
                       </table>
                     </td>
                   </tr>
-                  ${phone ? `
+                  ${safePhone ? `
                   <tr>
                     <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                           <td width="120" style="color: #718096; font-size: 14px; font-weight: 500;">Telefon:</td>
                           <td>
-                            <a href="tel:${phone}" style="color: #2d3748; font-size: 15px; font-weight: 600; text-decoration: none;">${phone}</a>
+                            <a href="tel:${safePhone}" style="color: #2d3748; font-size: 15px; font-weight: 600; text-decoration: none;">${safePhone}</a>
                           </td>
                         </tr>
                       </table>
                     </td>
                   </tr>
                   ` : ''}
-                  ${company ? `
+                  ${safeCompany ? `
                   <tr>
                     <td style="padding: 12px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.05);">
                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                         <tr>
                           <td width="120" style="color: #718096; font-size: 14px; font-weight: 500;">Şirket:</td>
-                          <td style="color: #2d3748; font-size: 15px; font-weight: 600;">${company}</td>
+                          <td style="color: #2d3748; font-size: 15px; font-weight: 600;">${safeCompany}</td>
                         </tr>
                       </table>
                     </td>
@@ -288,7 +324,7 @@ export default async function handler(
                   Mesaj İçeriği
                 </h2>
                 <div style="background: #f7fafc; border-left: 4px solid #f5576c; padding: 20px; border-radius: 8px; margin-top: 15px;">
-                  <p style="margin: 0; color: #2d3748; font-size: 15px; line-height: 1.8; white-space: pre-wrap; font-family: 'Georgia', serif;">${message.replace(/\n/g, '<br>')}</p>
+                  <p style="margin: 0; color: #2d3748; font-size: 15px; line-height: 1.8; white-space: pre-wrap; font-family: 'Georgia', serif;">${safeMessage}</p>
                 </div>
               </div>
 
@@ -296,7 +332,7 @@ export default async function handler(
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                 <tr>
                   <td align="center" style="padding: 20px 0;">
-                    <a href="mailto:${email}?subject=Re: ${serviceLabel}&body=Merhaba ${name},%0D%0A%0D%0A" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);">
+                    <a href="mailto:${safeEmail}?subject=Re: ${encodeURIComponent(serviceLabel)}&body=Merhaba ${encodeURIComponent(safeName)},%0D%0A%0D%0A" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 15px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);">
                       ✉️ Hemen Yanıtla
                     </a>
                   </td>
@@ -366,9 +402,30 @@ Bu mesaj yakinbogaz.com web sitesindeki iletişim formundan gönderilmiştir.
     });
   } catch (error) {
     console.error('Contact form error:', error);
+    
+    // Daha detaylı hata mesajı (development için)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const isDevelopment = process.env.NODE_ENV === 'development';
+    
+    // SMTP hatası kontrolü
+    if (errorMessage.includes('SMTP') || errorMessage.includes('transporter') || errorMessage.includes('authentication')) {
+      console.error('SMTP Configuration Error:', {
+        host: process.env.SMTP_HOST ? 'Set' : 'Missing',
+        port: process.env.SMTP_PORT ? 'Set' : 'Missing',
+        user: process.env.SMTP_USER ? 'Set' : 'Missing',
+        pass: process.env.SMTP_PASS ? 'Set' : 'Missing',
+      });
+      return res.status(500).json({
+        success: false,
+        message: 'Email gönderim servisi yapılandırma hatası. Lütfen site yöneticisi ile iletişime geçin.',
+      });
+    }
+    
     return res.status(500).json({
       success: false,
-      message: 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan email gönderin.',
+      message: isDevelopment 
+        ? `Bir hata oluştu: ${errorMessage}` 
+        : 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin veya doğrudan email gönderin.',
     });
   }
 }
