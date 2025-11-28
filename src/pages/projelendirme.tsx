@@ -10,17 +10,14 @@ export default function Projelendirme() {
   const services = [
     {
       id: "web-gelistirme",
-      title: "Web Geliştirme",
-      description: "Modern ve responsive web uygulamaları geliştiriyoruz. React, Next.js ve en güncel teknolojilerle performanslı web siteleri.",
+      title: t('home.webPagesTitle'),
+      description: t('home.webPagesDesc'),
       icon: "🌐",
       gradient: "from-blue-500 to-blue-600",
       features: [
-        "Responsive Tasarım",
-        "SEO Optimizasyonu",
-        "Hızlı Yükleme",
-        "Modern UI/UX",
-        "Güvenlik Sertifikaları",
-        "Analitik Entegrasyonu"
+        t('home.responsiveDesign'),
+        t('home.seoOptimization'),
+        t('home.fastLoading')
       ],
       technologies: ["React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"],
       timeline: "2-6 hafta",
@@ -28,17 +25,14 @@ export default function Projelendirme() {
     },
     {
       id: "mobil-uygulama",
-      title: "Mobil Uygulama",
-      description: "iOS ve Android için native ve cross-platform uygulamalar geliştiriyoruz. Kullanıcı deneyimi odaklı mobil çözümler.",
+      title: t('home.customSoftwareTitle'),
+      description: t('home.customSoftwareDesc'),
       icon: "📱",
-      gradient: "from-purple-500 to-purple-600",
+      gradient: "from-green-500 to-green-600",
       features: [
-        "Cross-Platform Geliştirme",
-        "Native Performans",
-        "Push Bildirimler",
-        "Offline Çalışma",
-        "App Store Optimizasyonu",
-        "Analitik ve Raporlama"
+        t('home.customDevelopment'),
+        t('home.processAutomation'),
+        t('home.efficiencyIncrease')
       ],
       technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
       timeline: "4-12 hafta",
@@ -46,17 +40,14 @@ export default function Projelendirme() {
     },
     {
       id: "ozel-cozumler",
-      title: "Özel Çözümler",
-      description: "İşletmenize özel yazılım çözümleri geliştiriyoruz. İş süreçlerinizi otomatikleştirin ve verimliliğinizi artırın.",
+      title: t('home.webToMobileTitle'),
+      description: t('home.webToMobileDesc'),
       icon: "💻",
-      gradient: "from-green-500 to-green-600",
+      gradient: "from-orange-500 to-orange-600",
       features: [
-        "İş Süreç Analizi",
-        "Özel Geliştirme",
-        "API Entegrasyonu",
-        "Veritabanı Tasarımı",
-        "Raporlama Sistemleri",
-        "Teknik Destek"
+        t('home.mobileCompatibility'),
+        t('home.pwaSupport'),
+        t('home.crossPlatform')
       ],
       technologies: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Docker"],
       timeline: "Proje bazlı",

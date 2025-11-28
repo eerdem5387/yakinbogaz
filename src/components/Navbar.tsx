@@ -71,7 +71,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center group"
+            className="flex items-center group space-x-3"
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -88,6 +88,9 @@ export default function Navbar() {
                 />
               </div>
             </motion.div>
+            <span className="text-black dark:text-white font-bold text-lg md:text-xl">
+              Yakın Boğaz
+            </span>
           </Link>
 
           {/* Desktop Menu */}

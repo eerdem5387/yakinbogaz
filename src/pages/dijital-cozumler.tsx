@@ -9,84 +9,81 @@ export default function DijitalCozumler() {
   const { t } = useLanguage();
   const services = [
     {
-      title: "Web Sayfaları",
-      description: "Modern, responsive ve SEO uyumlu web sayfaları tasarlıyoruz. Markanızı en iyi şekilde yansıtan profesyonel tasarımlar.",
+      title: t('home.webPagesTitle'),
+      description: t('home.webPagesDesc'),
       icon: "🌐",
       gradient: "from-blue-500 to-blue-600",
       features: [
-        "Responsive Tasarım",
-        "SEO Optimizasyonu", 
-        "Hızlı Yükleme",
-        "Modern UI/UX",
-        "Mobil Uyumluluk",
-        "Güvenlik Sertifikaları"
+        t('home.responsiveDesign'),
+        t('home.seoOptimization'), 
+        t('home.fastLoading')
       ],
       price: "Başlangıç: ₺5.000",
       duration: "2-4 hafta"
     },
     {
-      title: "E-Ticaret Hizmetleri",
-      description: "Kapsamlı e-ticaret çözümleri ile online satışlarınızı artırın. Güvenli ödeme sistemleri ve stok yönetimi.",
-      icon: "🛍️",
-      gradient: "from-pink-500 to-pink-600",
-      features: [
-        "Online Mağaza",
-        "Ödeme Sistemleri",
-        "Stok Yönetimi",
-        "Sipariş Takibi",
-        "Müşteri Yönetimi",
-        "Raporlama"
-      ],
-      price: "Başlangıç: ₺15.000",
-      duration: "4-8 hafta"
-    },
-    {
-      title: "Marka Tasarımları",
-      description: "Markanızı öne çıkaracak, unutulmaz tasarım çözümleri. Logo, kurumsal kimlik ve görsel iletişim materyalleri.",
+      title: t('home.brandDesignsTitle'),
+      description: t('home.brandDesignsDesc'),
       icon: "✨",
       gradient: "from-purple-500 to-purple-600",
       features: [
-        "Logo Tasarımı",
-        "Kurumsal Kimlik",
-        "Görsel Materyaller",
-        "Sosyal Medya Tasarımları",
-        "Baskı Materyalleri",
-        "Marka Rehberi"
+        t('home.logoDesign'),
+        t('home.corporateIdentity'),
+        t('home.visualMaterials')
       ],
       price: "Başlangıç: ₺3.000",
       duration: "1-2 hafta"
     },
     {
-      title: "İşinize Özel Yazılımlar",
-      description: "İhtiyaçlarınıza özel yazılım çözümleri geliştiriyoruz. İş süreçlerinizi otomatikleştirin ve verimliliğinizi artırın.",
+      title: t('home.ecommerceServicesTitle'),
+      description: t('home.ecommerceServicesDesc'),
+      icon: "🛍️",
+      gradient: "from-pink-500 to-pink-600",
+      features: [
+        t('home.onlineStore'),
+        t('home.paymentSystems'),
+        t('home.inventoryManagement')
+      ],
+      price: "Başlangıç: ₺15.000",
+      duration: "4-8 hafta"
+    },
+    {
+      title: t('home.customSoftwareTitle'),
+      description: t('home.customSoftwareDesc'),
       icon: "💻",
       gradient: "from-green-500 to-green-600",
       features: [
-        "Özel Geliştirme",
-        "Süreç Otomasyonu",
-        "Veritabanı Yönetimi",
-        "API Entegrasyonu",
-        "Raporlama Sistemleri",
-        "Teknik Destek"
+        t('home.customDevelopment'),
+        t('home.processAutomation'),
+        t('home.efficiencyIncrease')
       ],
       price: "Proje bazlı",
       duration: "Değişken"
     },
     {
-      title: "Web'den Mobile",
-      description: "Web uygulamalarınızı mobil cihazlara uyarlıyoruz. Her platformda mükemmel kullanıcı deneyimi.",
+      title: t('home.webToMobileTitle'),
+      description: t('home.webToMobileDesc'),
       icon: "📱",
       gradient: "from-orange-500 to-orange-600",
       features: [
-        "Mobil Uyumluluk",
-        "PWA Desteği",
-        "Cross-Platform",
-        "Native Performans",
-        "Offline Çalışma",
-        "Push Bildirimler"
+        t('home.mobileCompatibility'),
+        t('home.pwaSupport'),
+        t('home.crossPlatform')
       ],
       price: "Başlangıç: ₺8.000",
       duration: "3-6 hafta"
+    },
+    {
+      title: t('home.cmswebsite'),
+      description: t('home.cmswebsiteDesc'),
+      icon: "🖥️",
+      gradient: "from-indigo-500 to-indigo-600",
+      features: [
+        t('home.cmswebsiteFeature1'),
+        t('home.cmswebsiteFeature2')
+      ],
+      price: "Başlangıç: ₺10.000",
+      duration: "3-5 hafta"
     }
   ];
 

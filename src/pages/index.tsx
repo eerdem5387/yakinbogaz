@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -27,6 +27,45 @@ import {
 
 export default function Home() {
   const { t } = useLanguage();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    let scrollPosition = 0;
+    let animationFrameId: number;
+    let lastTime = performance.now();
+
+    const autoScroll = (currentTime: number) => {
+      if (!isPaused && scrollContainer) {
+        const deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
+        
+        // Çok yavaş ve smooth kaydırma - tereyağı gibi akıcı
+        const scrollSpeed = 0.05; // px per millisecond - çok yavaş ve smooth
+        scrollPosition += scrollSpeed * deltaTime;
+        
+        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+        
+        // Sonsuz döngü için - sona gelince başa dön
+        if (scrollPosition >= maxScroll) {
+          scrollPosition = 0;
+        }
+        
+        scrollContainer.scrollLeft = scrollPosition;
+      }
+      animationFrameId = requestAnimationFrame(autoScroll);
+    };
+
+    animationFrameId = requestAnimationFrame(autoScroll);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isPaused]);
+
   return (
     <Layout>
       <Seo
@@ -244,6 +283,13 @@ export default function Home() {
                   icon: <FiSmartphone className="w-8 h-8" />,
                   gradient: "from-orange-500 to-orange-600",
                   features: [t('home.mobileCompatibility'), t('home.pwaSupport'), t('home.crossPlatform')]
+                },
+                {
+                  title: t('home.cmswebsite'),
+                  description: t('home.cmswebsiteDesc'),
+                  icon: <FiMonitor className="w-8 h-8" />,
+                  gradient: "from-indigo-500 to-indigo-600",
+                  features: [t('home.cmswebsiteFeature1'), t('home.cmswebsiteFeature2')]
                 }
               ].map((service, index) => (
                 <motion.div
@@ -418,27 +464,76 @@ export default function Home() {
               </p>
             </motion.div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-8">
-              {[
-                "Levent Koleji",
-                "Karbonkurs Türkiye",
-                "SchoolRoute",
-                "MobilDers",
-                "Payem Turizm",
-                "Av. Abdulkadir Erdem"
-              ].map((ref, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-4 md:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-center border border-gray-200 dark:border-gray-600"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <FiStar className="text-xl md:text-2xl mb-3 mx-auto text-blue-500" />
-                  <div className="font-semibold text-gray-800 dark:text-gray-200 text-sm md:text-base">{ref}</div>
-                </motion.div>
-              ))}
+            <div 
+              ref={scrollContainerRef}
+              className="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              style={{ scrollBehavior: 'auto' }}
+            >
+              <div className="flex gap-4 md:gap-8 px-4 md:px-0 min-w-max pb-4">
+                {[
+                  {
+                    name: t('home.reference1'),
+                    logo: "/img/references/levent-koleji.png"
+                  },
+                  {
+                    name: t('home.reference2'),
+                    logo: "/img/references/karbonkurs-turkiye.png"
+                  },
+                  {
+                    name: t('home.reference3'),
+                    logo: "/img/references/sahinkaya-koleji-bursa.png"
+                  },
+                  {
+                    name: t('home.reference4'),
+                    logo: "/img/references/seva-insaat-bursa.png"
+                  },
+                  {
+                    name: t('home.reference5'),
+                    logo: "/img/references/hisarlar-makina-eskisehir.png"
+                  },
+                  {
+                    name: t('home.reference6'),
+                    logo: "/img/references/schoolroute.png"
+                  },
+                  {
+                    name: t('home.reference7'),
+                    logo: "/img/references/mobilders.jpeg"
+                  },
+                  {
+                    name: t('home.reference8'),
+                    logo: "/img/references/payem-turizm.png"
+                  },
+                  {
+                    name: t('home.reference9'),
+                    logo: "/img/references/abdulkadir-erdem.png"
+                  }
+                ].map((ref, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-4 md:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-center border border-gray-200 dark:border-gray-600 flex flex-col items-center justify-center min-w-[200px] md:min-w-[240px]"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    {ref.logo ? (
+                      <div className="relative w-20 h-20 md:w-24 md:h-24 mb-3">
+                        <Image
+                          src={ref.logo}
+                          alt={ref.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <FiStar className="text-xl md:text-2xl mb-3 mx-auto text-blue-500" />
+                    )}
+                    <div className="font-semibold text-gray-800 dark:text-gray-200 text-sm md:text-base">{ref.name}</div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

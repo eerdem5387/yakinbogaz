@@ -5,6 +5,7 @@ import Seo from '@/components/Seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { FiMapPin, FiCpu } from 'react-icons/fi';
 
 export default function Urunler() {
   const { t } = useLanguage();
@@ -127,6 +128,110 @@ export default function Urunler() {
           </div>
         </motion.section>
 
+        {/* Navigasyon ve AI Teknolojileri */}
+        <section className="py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+          <div className="container mx-auto px-6">
+            <motion.div
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                {t('products.navigationAiTechTitle')}
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                {t('products.navigationAiTechSubtitle')}
+              </p>
+            </motion.div>
+
+            <div className="space-y-16">
+              {/* CCNS */}
+              <motion.div
+                className="flex flex-col lg:flex-row gap-12 items-center"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="lg:w-1/2">
+                  <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-8 rounded-2xl text-white text-center">
+                    <div className="h-32 flex items-center justify-center mb-6">
+                      <FiMapPin className="w-24 h-24 text-white opacity-90" />
+                    </div>
+                    <h3 className="text-3xl font-bold mb-2">{t('products.ccnsTitle')}</h3>
+                    <p className="text-xl opacity-90">{t('products.ccnsSubtitle')}</p>
+                  </div>
+                </div>
+
+                <div className="lg:w-1/2">
+                  <h3 className="text-3xl font-bold mb-4 text-gray-800">{t('products.ccnsTitle')}</h3>
+                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">{t('products.ccnsDescription')}</p>
+                  
+                  <div className="mb-8">
+                    <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.features')}</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {[
+                        t('products.ccnsFeature1'),
+                        t('products.ccnsFeature2'),
+                        t('products.ccnsFeature3'),
+                        t('products.ccnsFeature4')
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-center text-sm text-gray-700">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* CCAI */}
+              <motion.div
+                className="flex flex-col lg:flex-row-reverse gap-12 items-center"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <div className="lg:w-1/2">
+                  <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-8 rounded-2xl text-white text-center">
+                    <div className="h-32 flex items-center justify-center mb-6">
+                      <FiCpu className="w-24 h-24 text-white opacity-90" />
+                    </div>
+                    <h3 className="text-3xl font-bold mb-2">{t('products.ccaiTitle')}</h3>
+                    <p className="text-xl opacity-90">{t('products.ccaiSubtitle')}</p>
+                  </div>
+                </div>
+
+                <div className="lg:w-1/2">
+                  <h3 className="text-3xl font-bold mb-4 text-gray-800">{t('products.ccaiTitle')}</h3>
+                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">{t('products.ccaiDescription')}</p>
+                  
+                  <div className="mb-8">
+                    <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.features')}</h4>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {[
+                        t('products.ccaiFeature1'),
+                        t('products.ccaiFeature2'),
+                        t('products.ccaiFeature3'),
+                        t('products.ccaiFeature4')
+                      ].map((feature, idx) => (
+                        <div key={idx} className="flex items-center text-sm text-gray-700">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Eğitim Ürünleri */}
         <section className="py-24 bg-white">
           <div className="container mx-auto px-6">
@@ -205,12 +310,6 @@ export default function Urunler() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <Link 
-                        href={product.demo}
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 text-center"
-                      >
-                        {t('products.viewDemo')}
-                      </Link>
                       {product.appStore && (
                         <Link 
                           href={product.appStore}
@@ -235,6 +334,7 @@ export default function Urunler() {
           </div>
         </section>
 
+
         {/* E-Ticaret Modülleri */}
         <section className="py-24 bg-gradient-to-br from-blue-50 to-purple-50">
           <div className="container mx-auto px-6">
@@ -246,10 +346,10 @@ export default function Urunler() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                E-Ticaret Modülleri
+                {t('products.ecommerceModulesTitle')}
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Baştan sona e-ticaret çözümleri ile online satışlarınızı artırın
+                {t('products.ecommerceModulesSubtitle')}
               </p>
             </motion.div>
 
@@ -281,7 +381,7 @@ export default function Urunler() {
                 href="/dijital-cozumler#e-ticaret"
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 inline-block"
               >
-                E-Ticaret Çözümlerimizi İncele
+                {t('products.viewEcommerceSolutions')}
               </Link>
             </motion.div>
           </div>
@@ -299,34 +399,33 @@ export default function Urunler() {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  MobilDers – AKER Temel Matematik
+                  {t('products.mobildersTitle')}
                 </h2>
                 <p className="text-xl opacity-90 max-w-3xl mx-auto">
-                  "Mobil Eğitim Her Yerde Seninle!" Matematik öğrenmeyi kolaylaştıran 
-                  MobilDers, her soruya özel çözüm videoları ile etkili bir öğrenme deneyimi sunuyor.
+                  {t('products.mobildersSubtitle')}
                 </p>
               </motion.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {[
                   {
-                    title: "Temel Matematik",
-                    description: "Hiç matematik bilmeyenler için en basitten zora doğru öğreticilik",
+                    title: t('products.basicMath'),
+                    description: t('products.basicMathDesc'),
                     icon: "📚"
                   },
                   {
-                    title: "Video Çözümler",
-                    description: "Çözdüğün her sorunun detaylı çözüm videosunu izleyerek konuyu pekiştir",
+                    title: t('products.videoSolutions'),
+                    description: t('products.videoSolutionsDesc'),
                     icon: "🎥"
                   },
                   {
-                    title: "Çizim ile Çözüm",
-                    description: "Ekran üzerinde çizim yaparak soruları kendi yöntemlerinle çöz",
+                    title: t('products.drawingSolution'),
+                    description: t('products.drawingSolutionDesc'),
                     icon: "✏️"
                   },
                   {
-                    title: "İlerleme Takibi",
-                    description: "Çalışmalarını görsel grafiklerle takip et, gelişimini adım adım gör",
+                    title: t('products.progressTracking'),
+                    description: t('products.progressTrackingDesc'),
                     icon: "📊"
                   }
                 ].map((feature, index) => (
@@ -359,13 +458,13 @@ export default function Urunler() {
                     href="https://apps.apple.com/tr/app/mobilders-temel-matematik/id6747803131?l=tr"
                     className="bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                   >
-                    App Store'dan İndir
+                    {t('products.downloadAppStore')}
                   </Link>
                   <Link 
                     href="https://play.google.com/store/apps/details?id=com.ismailkart53.ebook"
                     className="bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                   >
-                    Google Play'den İndir
+                    {t('products.downloadGooglePlay')}
                   </Link>
                 </div>
               </motion.div>
@@ -384,9 +483,9 @@ export default function Urunler() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                Ürünlerimiz Hakkında
+                {t('products.ctaTitle1')}
                 <span className="block bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                  Daha Fazla Bilgi
+                  {t('products.ctaTitle2')}
                 </span>
               </motion.h2>
               
@@ -397,8 +496,7 @@ export default function Urunler() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                Ürünlerimiz hakkında detaylı bilgi almak ve demo talep etmek için 
-                bizimle iletişime geçin.
+                {t('products.ctaDescription')}
               </motion.p>
               
               <motion.div
@@ -412,7 +510,7 @@ export default function Urunler() {
                   href="/iletisim"
                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  Demo Talep Et
+                  {t('products.requestDemo')}
                 </Link>
                 <Link 
                   href="/gizlilik-politikasi"
