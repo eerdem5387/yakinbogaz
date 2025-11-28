@@ -22,7 +22,9 @@ import {
   FiTarget,
   FiBookOpen,
   FiMonitor,
-  FiDatabase
+  FiDatabase,
+  FiMapPin,
+  FiCpu
 } from 'react-icons/fi';
 
 export default function Home() {
@@ -314,6 +316,84 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Navigasyon ve AI Teknolojileri */}
+        <section className="py-16 md:py-24 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              className="text-center mb-12 md:mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
+                {t('products.navigationAiTechTitle1')}
+                <span className="block bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
+                  {t('products.navigationAiTechTitle2')}
+                </span>
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
+                {t('products.navigationAiTechSubtitle')}
+              </p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {[
+                {
+                  title: t('products.ccnsTitle'),
+                  description: t('products.ccnsDescription'),
+                  features: [t('products.ccnsFeature1'), t('products.ccnsFeature2'), t('products.ccnsFeature3'), t('products.ccnsFeature4')],
+                  color: "blue",
+                  icon: <FiMapPin className="w-16 h-16" />
+                },
+                {
+                  title: t('products.ccaiTitle'),
+                  description: t('products.ccaiDescription'),
+                  features: [t('products.ccaiFeature1'), t('products.ccaiFeature2'), t('products.ccaiFeature3'), t('products.ccaiFeature4')],
+                  color: "purple",
+                  icon: <FiCpu className="w-16 h-16" />
+                },
+              ].map((product, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden border border-gray-100 dark:border-gray-700"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <div className={`bg-gradient-to-r from-${product.color}-500 to-${product.color}-600 p-8 text-white text-center`}>
+                    <div className="flex justify-center mb-4">
+                      <div className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                        {product.icon}
+                      </div>
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">{product.title}</h3>
+                  </div>
+                  <div className="p-6 md:p-8">
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-sm md:text-base">{product.description}</p>
+                    <ul className="space-y-3 mb-6">
+                      {product.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                          <FiCheck className={`w-4 h-4 text-${product.color}-500 mr-3 flex-shrink-0`} />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link 
+                      href="/urunler"
+                      className={`bg-gradient-to-r from-${product.color}-500 to-${product.color}-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block flex items-center justify-center space-x-2 w-full`}
+                    >
+                      <span>{t('home.viewDetails')}</span>
+                      <FiArrowRight className="w-5 h-5" />
+                    </Link>
                   </div>
                 </motion.div>
               ))}
