@@ -88,9 +88,14 @@ export default function Navbar() {
                 />
               </div>
             </motion.div>
-            <span className="text-black dark:text-white font-bold text-lg md:text-xl">
-              Yakın Boğaz
-            </span>
+            <div className="flex flex-col">
+              <span className="text-black dark:text-white font-bold text-lg md:text-xl font-sans tracking-wide uppercase">
+                Yakın Boğaz
+              </span>
+              <span className="text-gray-600 dark:text-gray-400 text-xs md:text-sm font-medium">
+                {t('nav.tagline')}
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Menu */}
