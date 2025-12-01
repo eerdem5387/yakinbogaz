@@ -457,10 +457,6 @@ export default function Iletisim() {
                   answer: "Proje süreleri projenin kapsamına göre değişmektedir. Basit web siteleri 2-4 hafta, e-ticaret projeleri 4-8 hafta, özel yazılım projeleri ise proje kapsamına göre belirlenmektedir."
                 },
                 {
-                  question: "Fiyatlandırma nasıl yapılıyor?",
-                  answer: "Fiyatlandırma projenin kapsamı, kullanılacak teknolojiler ve süreye göre belirlenmektedir. Detaylı fiyat teklifi için bizimle iletişime geçebilirsiniz."
-                },
-                {
                   question: "Teknik destek hizmeti veriyor musunuz?",
                   answer: "Evet, tüm projelerimiz için teknik destek ve bakım hizmetleri sunuyoruz. 7/24 destek hizmetimiz mevcuttur."
                 },

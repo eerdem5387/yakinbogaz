@@ -4,6 +4,21 @@ import { motion } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { 
+  FiGlobe, 
+  FiCode, 
+  FiSmartphone,
+  FiCheck,
+  FiFile,
+  FiGrid,
+  FiZap,
+  FiSettings,
+  FiSend,
+  FiTarget,
+  FiTrendingUp,
+  FiShield,
+  FiAward
+} from 'react-icons/fi';
 
 export default function Projelendirme() {
   const { t } = useLanguage();
@@ -12,7 +27,7 @@ export default function Projelendirme() {
       id: "web-gelistirme",
       title: t('home.webPagesTitle'),
       description: t('home.webPagesDesc'),
-      icon: "🌐",
+      icon: <FiGlobe className="w-12 h-12" />,
       gradient: "from-blue-500 to-blue-600",
       features: [
         t('home.responsiveDesign'),
@@ -20,14 +35,13 @@ export default function Projelendirme() {
         t('home.fastLoading')
       ],
       technologies: ["React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"],
-      timeline: "2-6 hafta",
-      price: "₺5.000 - ₺25.000"
+      timeline: "2-6 hafta"
     },
     {
       id: "mobil-uygulama",
       title: t('home.customSoftwareTitle'),
       description: t('home.customSoftwareDesc'),
-      icon: "📱",
+      icon: <FiCode className="w-12 h-12" />,
       gradient: "from-green-500 to-green-600",
       features: [
         t('home.customDevelopment'),
@@ -35,14 +49,13 @@ export default function Projelendirme() {
         t('home.efficiencyIncrease')
       ],
       technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
-      timeline: "4-12 hafta",
-      price: "₺15.000 - ₺50.000"
+      timeline: "4-12 hafta"
     },
     {
       id: "ozel-cozumler",
       title: t('home.webToMobileTitle'),
       description: t('home.webToMobileDesc'),
-      icon: "💻",
+      icon: <FiSmartphone className="w-12 h-12" />,
       gradient: "from-orange-500 to-orange-600",
       features: [
         t('home.mobileCompatibility'),
@@ -50,8 +63,7 @@ export default function Projelendirme() {
         t('home.crossPlatform')
       ],
       technologies: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Docker"],
-      timeline: "Proje bazlı",
-      price: "Proje bazlı"
+      timeline: "Proje bazlı"
     }
   ];
 
@@ -60,42 +72,42 @@ export default function Projelendirme() {
       step: "01",
       title: "İhtiyaç Analizi",
       description: "Projenizin gereksinimlerini detaylı olarak analiz eder, hedeflerinizi belirleriz.",
-      icon: "📋",
+      icon: <FiFile className="w-8 h-8" />,
       duration: "1-2 hafta"
     },
     {
       step: "02",
       title: "Tasarım & Planlama",
       description: "Kullanıcı deneyimi ve teknik mimari tasarımını oluşturur, proje planını hazırlarız.",
-      icon: "🎨",
+      icon: <FiGrid className="w-8 h-8" />,
       duration: "1-3 hafta"
     },
     {
       step: "03",
       title: "Geliştirme",
       description: "Modern teknolojilerle projenizi geliştirir, düzenli güncellemeler sağlarız.",
-      icon: "⚡",
+      icon: <FiZap className="w-8 h-8" />,
       duration: "2-8 hafta"
     },
     {
       step: "04",
       title: "Test & Optimizasyon",
       description: "Kapsamlı testler yapar, performans optimizasyonu ve güvenlik kontrollerini gerçekleştiriz.",
-      icon: "🔧",
+      icon: <FiSettings className="w-8 h-8" />,
       duration: "1-2 hafta"
     },
     {
       step: "05",
       title: "Yayın & Eğitim",
       description: "Projenizi yayınlar, kullanıcı eğitimleri verir ve dokümantasyon hazırlarız.",
-      icon: "🚀",
+      icon: <FiSend className="w-8 h-8" />,
       duration: "1 hafta"
     },
     {
       step: "06",
       title: "Destek & Bakım",
       description: "Sürekli teknik destek, güncellemeler ve bakım hizmetleri sağlarız.",
-      icon: "🛠️",
+      icon: <FiSettings className="w-8 h-8" />,
       duration: "Sürekli"
     }
   ];
@@ -181,17 +193,13 @@ export default function Projelendirme() {
                 >
                   <div className="lg:w-1/2">
                     <div className={`bg-gradient-to-r ${service.gradient} p-8 rounded-2xl text-white`}>
-                      <div className="text-4xl mb-4">{service.icon}</div>
+                      <div className="mb-4 text-white">{service.icon}</div>
                       <h3 className="text-3xl font-bold mb-4">{service.title}</h3>
                       <p className="text-lg opacity-90 mb-6">{service.description}</p>
-                      <div className="grid grid-cols-2 gap-4 text-sm">
+                      <div className="text-sm">
                         <div>
                           <span className="opacity-75">{t('projects.duration')}</span>
                           <div className="font-semibold">{service.timeline}</div>
-                        </div>
-                        <div>
-                          <span className="opacity-75">{t('projects.price')}</span>
-                          <div className="font-semibold">{service.price}</div>
                         </div>
                       </div>
                     </div>
@@ -205,7 +213,7 @@ export default function Projelendirme() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {service.features.map((feature, idx) => (
                           <div key={idx} className="flex items-center text-sm text-gray-700">
-                            <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                            <FiCheck className="w-4 h-4 text-blue-500 mr-3 flex-shrink-0" />
                             {feature}
                           </div>
                         ))}
@@ -265,7 +273,7 @@ export default function Projelendirme() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <div className="text-center">
-                    <div className="text-4xl mb-4">{step.icon}</div>
+                    <div className="flex justify-center mb-4 text-blue-600">{step.icon}</div>
                     <div className="text-3xl font-bold text-blue-600 mb-4">{step.step}</div>
                     <h3 className="text-xl font-bold mb-3 text-gray-800">{step.title}</h3>
                     <p className="text-gray-600 mb-4">{step.description}</p>
@@ -300,25 +308,25 @@ export default function Projelendirme() {
                 {
                   title: "Deneyim",
                   description: "4+ yıllık sektör deneyimi ile güvenilir çözümler",
-                  icon: "🎯",
+                  icon: <FiTrendingUp className="w-8 h-8" />,
                   color: "blue"
                 },
                 {
                   title: "Teknoloji",
                   description: "En güncel teknolojilerle modern çözümler",
-                  icon: "⚡",
+                  icon: <FiZap className="w-8 h-8" />,
                   color: "purple"
                 },
                 {
                   title: "Destek",
                   description: "7/24 teknik destek ve bakım hizmetleri",
-                  icon: "🛠️",
+                  icon: <FiShield className="w-8 h-8" />,
                   color: "green"
                 },
                 {
                   title: "Kalite",
                   description: "Yüksek kalite standartları ve test süreçleri",
-                  icon: "🏆",
+                  icon: <FiAward className="w-8 h-8" />,
                   color: "orange"
                 }
               ].map((advantage, index) => (
@@ -331,7 +339,14 @@ export default function Projelendirme() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <div className={`bg-gradient-to-br from-${advantage.color}-50 to-${advantage.color}-100 p-8 rounded-2xl border border-${advantage.color}-200`}>
-                    <div className="text-4xl mb-4">{advantage.icon}</div>
+                    <div className={`flex justify-center mb-4 ${
+                      advantage.color === 'blue' ? 'text-blue-600' :
+                      advantage.color === 'purple' ? 'text-purple-600' :
+                      advantage.color === 'green' ? 'text-green-600' :
+                      'text-orange-600'
+                    }`}>
+                      {advantage.icon}
+                    </div>
                     <h3 className="text-xl font-bold mb-3 text-gray-800">{advantage.title}</h3>
                     <p className="text-gray-600">{advantage.description}</p>
                   </div>

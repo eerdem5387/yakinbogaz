@@ -4,6 +4,20 @@ import { motion } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { 
+  FiGlobe, 
+  FiStar, 
+  FiShoppingCart, 
+  FiCode, 
+  FiSmartphone, 
+  FiMonitor,
+  FiCheck,
+  FiFile,
+  FiGrid,
+  FiZap,
+  FiSettings,
+  FiSend
+} from 'react-icons/fi';
 
 export default function DijitalCozumler() {
   const { t } = useLanguage();
@@ -11,79 +25,67 @@ export default function DijitalCozumler() {
     {
       title: t('home.webPagesTitle'),
       description: t('home.webPagesDesc'),
-      icon: "🌐",
+      icon: <FiGlobe className="w-8 h-8" />,
       gradient: "from-blue-500 to-blue-600",
       features: [
         t('home.responsiveDesign'),
         t('home.seoOptimization'), 
         t('home.fastLoading')
-      ],
-      price: "Başlangıç: ₺5.000",
-      duration: "2-4 hafta"
+      ]
     },
     {
       title: t('home.brandDesignsTitle'),
       description: t('home.brandDesignsDesc'),
-      icon: "✨",
+      icon: <FiStar className="w-8 h-8" />,
       gradient: "from-purple-500 to-purple-600",
       features: [
         t('home.logoDesign'),
         t('home.corporateIdentity'),
         t('home.visualMaterials')
-      ],
-      price: "Başlangıç: ₺3.000",
-      duration: "1-2 hafta"
+      ]
     },
     {
       title: t('home.ecommerceServicesTitle'),
       description: t('home.ecommerceServicesDesc'),
-      icon: "🛍️",
+      icon: <FiShoppingCart className="w-8 h-8" />,
       gradient: "from-pink-500 to-pink-600",
       features: [
         t('home.onlineStore'),
         t('home.paymentSystems'),
         t('home.inventoryManagement')
-      ],
-      price: "Başlangıç: ₺15.000",
-      duration: "4-8 hafta"
+      ]
     },
     {
       title: t('home.customSoftwareTitle'),
       description: t('home.customSoftwareDesc'),
-      icon: "💻",
+      icon: <FiCode className="w-8 h-8" />,
       gradient: "from-green-500 to-green-600",
       features: [
         t('home.customDevelopment'),
         t('home.processAutomation'),
         t('home.efficiencyIncrease')
-      ],
-      price: "Proje bazlı",
-      duration: "Değişken"
+      ]
     },
     {
       title: t('home.webToMobileTitle'),
       description: t('home.webToMobileDesc'),
-      icon: "📱",
+      icon: <FiSmartphone className="w-8 h-8" />,
       gradient: "from-orange-500 to-orange-600",
       features: [
         t('home.mobileCompatibility'),
         t('home.pwaSupport'),
         t('home.crossPlatform')
-      ],
-      price: "Başlangıç: ₺8.000",
-      duration: "3-6 hafta"
+      ]
     },
     {
       title: t('home.cmswebsite'),
       description: t('home.cmswebsiteDesc'),
-      icon: "🖥️",
+      icon: <FiMonitor className="w-8 h-8" />,
       gradient: "from-indigo-500 to-indigo-600",
       features: [
         t('home.cmswebsiteFeature1'),
         t('home.cmswebsiteFeature2')
-      ],
-      price: "Başlangıç: ₺10.000",
-      duration: "3-5 hafta"
+      ]
     }
   ];
 
@@ -162,12 +164,8 @@ export default function DijitalCozumler() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <div className={`bg-gradient-to-r ${service.gradient} p-8 text-white`}>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="text-4xl">{service.icon}</div>
-                      <div className="text-right">
-                        <div className="text-sm opacity-90">{service.price}</div>
-                        <div className="text-xs opacity-75">{service.duration}</div>
-                      </div>
+                    <div className="mb-4">
+                      <div className="text-white">{service.icon}</div>
                     </div>
                     <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
                     <p className="opacity-90">{service.description}</p>
@@ -178,7 +176,7 @@ export default function DijitalCozumler() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
                       {service.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center text-sm text-gray-700">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                          <FiCheck className="w-4 h-4 text-blue-500 mr-3 flex-shrink-0" />
                           {feature}
                         </div>
                       ))}
@@ -229,25 +227,25 @@ export default function DijitalCozumler() {
                   step: "01",
                   title: "Analiz & Planlama",
                   description: "İhtiyaçlarınızı analiz eder, en uygun çözümü planlarız",
-                  icon: "📋"
+                  icon: <FiFile className="w-8 h-8" />
                 },
                 {
                   step: "02", 
                   title: "Tasarım & Geliştirme",
                   description: "Modern tasarımlar ve güçlü teknolojilerle geliştiririz",
-                  icon: "🎨"
+                  icon: <FiGrid className="w-8 h-8" />
                 },
                 {
                   step: "03",
                   title: "Test & Optimizasyon", 
                   description: "Kapsamlı testler ve performans optimizasyonu yaparız",
-                  icon: "🔧"
+                  icon: <FiSettings className="w-8 h-8" />
                 },
                 {
                   step: "04",
                   title: "Yayın & Destek",
                   description: "Projenizi yayınlar ve sürekli destek sağlarız",
-                  icon: "🚀"
+                  icon: <FiSend className="w-8 h-8" />
                 }
               ].map((process, index) => (
                 <motion.div
@@ -259,7 +257,7 @@ export default function DijitalCozumler() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div className="text-4xl mb-4">{process.icon}</div>
+                    <div className="flex justify-center mb-4 text-blue-600">{process.icon}</div>
                     <div className="text-3xl font-bold text-blue-600 mb-4">{process.step}</div>
                     <h3 className="text-xl font-bold mb-3 text-gray-800">{process.title}</h3>
                     <p className="text-gray-600">{process.description}</p>
