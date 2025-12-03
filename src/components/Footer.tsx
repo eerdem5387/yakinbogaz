@@ -97,8 +97,9 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                YakınBoğaz Software
+              <h3 className="text-xl md:text-2xl font-bold text-yellow-400 dark:text-yellow-300">
+                <span className="block">Yakın Boğaz</span>
+                <span className="block text-base md:text-lg">E-Ticaret ve Yazılım</span>
               </h3>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed text-sm md:text-base">

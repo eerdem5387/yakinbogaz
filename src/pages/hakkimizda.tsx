@@ -3,6 +3,7 @@ import Layout from '@/components/Layout';
 import { motion } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   FiTarget,
@@ -112,8 +113,56 @@ export default function Hakkimizda() {
           </div>
         </motion.section>
 
-        {/* Story Section */}
+        {/* Founders Section */}
         <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              className="text-center mb-12 md:mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
+                {t('about.foundersTitle')}
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
+                {t('about.foundersSubtitle')}
+              </p>
+            </motion.div>
+
+            <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              {[1, 2].map((founder, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-600 text-center"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                >
+                  <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-amber-500 dark:border-amber-400 shadow-lg">
+                    <Image
+                      src={`/img/founders/founder-${founder}.jpg`}
+                      alt={`Kurucu ${founder}`}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold mb-2 text-gray-900 dark:text-white">
+                    Kurucu {founder}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base">
+                    YakınBoğaz'ın kurucularından biri
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Story Section */}
+        <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <motion.div

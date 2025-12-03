@@ -71,14 +71,14 @@ export default function Navbar() {
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center group space-x-3"
+            className="flex items-center group space-x-2 md:space-x-3"
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="relative"
             >
-              <div className="relative w-16 h-16 md:w-20 md:h-20">
+              <div className="relative w-12 h-12 md:w-14 md:h-14">
                 <Image
                   src="/img/yb-logo.png"
                   alt="YakınBoğaz Software Logo"
@@ -88,11 +88,11 @@ export default function Navbar() {
                 />
               </div>
             </motion.div>
-            <div className="flex flex-col">
-              <span className="text-black dark:text-white font-bold text-lg md:text-xl font-sans tracking-wide uppercase">
+            <div className="flex flex-col leading-tight">
+              <span className="text-yellow-400 dark:text-yellow-300 font-bold text-sm md:text-base font-sans tracking-wide uppercase">
                 Yakın Boğaz
               </span>
-              <span className="text-gray-600 dark:text-gray-400 text-xs md:text-sm font-medium">
+              <span className="text-yellow-400 dark:text-yellow-300 font-bold text-[10px] md:text-xs font-sans tracking-wide uppercase">
                 {t('nav.tagline')}
               </span>
             </div>
