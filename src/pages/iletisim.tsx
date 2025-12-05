@@ -101,7 +101,9 @@ export default function Iletisim() {
     <Layout>
       <Seo
         title="İletişim - YakınBoğaz Software"
-        description="YakınBoğaz Software ile iletişime geçin. Ücretsiz danışmanlık, proje teklifi ve teknik destek için bizimle iletişime geçin."
+        description="YakınBoğaz Software ile iletişime geçin. Ücretsiz danışmanlık, proje teklifi ve teknik destek için bizimle iletişime geçin. Rize, Türkiye."
+        keywords="iletişim, yakınboğaz iletişim, yazılım danışmanlığı, ücretsiz teklif, teknik destek, Rize yazılım şirketi"
+        image="/img/yb-logo.png"
       />
       
       <main>

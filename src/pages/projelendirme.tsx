@@ -116,7 +116,9 @@ export default function Projelendirme() {
     <Layout>
       <Seo
         title="Projelendirme - YakınBoğaz Software"
-        description="İşinizi tepeden tırnağa dijitalleştirelim. Web geliştirme, mobil uygulama ve özel yazılım çözümleri ile projelerinizi hayata geçirin."
+        description="İşinizi tepeden tırnağa dijitalleştirelim. Web geliştirme, mobil uygulama ve özel yazılım çözümleri ile projelerinizi hayata geçirin. Profesyonel proje yönetimi."
+        keywords="projelendirme, dijital dönüşüm, web geliştirme, mobil uygulama projesi, yazılım projesi, proje yönetimi, dijital çözüm projesi"
+        image="/img/yb-logo.png"
       />
       
       <main>

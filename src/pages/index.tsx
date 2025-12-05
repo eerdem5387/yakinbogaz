@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import Seo from "@/components/Seo";
+import StructuredData from "@/components/StructuredData";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   FiGlobe, 
@@ -73,7 +74,11 @@ export default function Home() {
       <Seo
         title="YakınBoğaz Software - Modern Dijital Çözümler"
         description="Şirketinize yönelik dijital çözümler, e-ticaret hizmetleri, özel yazılımlar ve eğitim teknolojileri. MobilDers ve SchoolRoute ile geleceğin eğitimini bugünden yaşayın."
+        keywords="dijital çözümler, e-ticaret, yazılım geliştirme, web tasarım, mobil uygulama, SchoolRoute, MobilDers, eğitim teknolojileri, Rize yazılım şirketi, Türkiye dijital çözümler"
+        image="/img/yb-logo.png"
       />
+      <StructuredData type="Organization" />
+      <StructuredData type="WebSite" />
       <main className="overflow-hidden">
         {/* Hero Section */}
         <motion.section 

@@ -84,7 +84,9 @@ export default function Hakkimizda() {
     <Layout>
       <Seo
         title="Hakkımızda - YakınBoğaz Software"
-        description="2020 yılından bu yana dijital çözümler sunan, eğitim teknolojileri ve yazılım geliştirme alanında uzmanlaşmış şirket."
+        description="2020 yılından bu yana dijital çözümler sunan, eğitim teknolojileri ve yazılım geliştirme alanında uzmanlaşmış şirket. Emin Usta ve Av. Abdulkadir Erdem'in kurduğu YakınBoğaz hikayesi."
+        keywords="YakınBoğaz hakkında, yazılım şirketi, dijital çözümler şirketi, Rize teknoloji şirketi, eğitim teknolojileri, kurucular"
+        image="/img/yb-logo.png"
       />
       
       <main>

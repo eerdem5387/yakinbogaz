@@ -7,8 +7,11 @@ export default function GizlilikPolitikasi() {
   return (
     <Layout>
       <Seo
-        title="Gizlilik Politikası - MobilDers"
-        description="MobilDers uygulamasının gizlilik politikası. Kişisel verilerinizin nasıl toplandığı, kullanıldığı ve korunduğu hakkında detaylı bilgi."
+        title="Gizlilik Politikası - YakınBoğaz Software"
+        description="YakınBoğaz Software gizlilik politikası. Kişisel verilerinizin nasıl toplandığı, kullanıldığı ve korunduğu hakkında detaylı bilgi. KVKK uyumlu."
+        keywords="gizlilik politikası, KVKK, kişisel veriler, veri koruma, gizlilik, YakınBoğaz gizlilik"
+        image="/img/yb-logo.png"
+        noindex={true}
       />
       
       <div className="container mx-auto px-6 py-20">

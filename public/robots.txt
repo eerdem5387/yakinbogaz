@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://yakinbogaz.com/sitemap.xml
+
+# Disallow admin and private areas if any
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+

@@ -100,7 +100,9 @@ export default function Urunler() {
     <Layout>
       <Seo
         title="Ürünlerimiz - YakınBoğaz Software"
-        description="SchoolRoute okul yönetim sistemi, MobilDers matematik uygulaması ve e-ticaret modülleri. Eğitim teknolojileri ve dijital çözümler."
+        description="SchoolRoute okul servis yönetim sistemi, MobilDers matematik uygulaması, CCNS kapalı devre navigasyon sistemi ve CCAI yapay zeka sistemi. Eğitim teknolojileri ve dijital çözümler."
+        keywords="SchoolRoute, MobilDers, CCNS, CCAI, okul servis yönetimi, matematik uygulaması, navigasyon sistemi, yapay zeka, eğitim teknolojileri, mobil eğitim"
+        image="/img/yb-logo.png"
       />
       
       <main>

@@ -93,7 +93,9 @@ export default function DijitalCozumler() {
     <Layout>
       <Seo
         title="Dijital Çözümler - YakınBoğaz Software"
-        description="Web sayfaları, e-ticaret hizmetleri, marka tasarımları, özel yazılımlar ve mobil uygulamalar. İşletmeniz için kapsamlı dijital çözümler."
+        description="Web sayfaları, e-ticaret hizmetleri, marka tasarımları, özel yazılımlar ve mobil uygulamalar. İşletmeniz için kapsamlı dijital çözümler. CCNS ve CCAI teknolojileri."
+        keywords="dijital çözümler, web tasarım, e-ticaret sitesi, mobil uygulama geliştirme, özel yazılım, CMS web yönetimi, iş yönetim sistemleri, CCNS, CCAI"
+        image="/img/yb-logo.png"
       />
       
       <main>
