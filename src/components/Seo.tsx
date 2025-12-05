@@ -26,7 +26,13 @@ export default function Seo({
   nofollow = false,
 }: SeoProps) {
   const router = useRouter();
-  const currentUrl = canonicalUrl || `${siteUrl}${router.asPath}`;
+  // Trailing slash ekle (next.config.ts'de trailingSlash: true olduğu için)
+  const pathWithTrailingSlash = router.asPath === '/' 
+    ? router.asPath 
+    : router.asPath.endsWith('/') 
+      ? router.asPath 
+      : `${router.asPath}/`;
+  const currentUrl = canonicalUrl || `${siteUrl}${pathWithTrailingSlash}`;
   const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
   const fullTitle = `${title} | Yakın Boğaz E-Ticaret ve Yazılım`;
 

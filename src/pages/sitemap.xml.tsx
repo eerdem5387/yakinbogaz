@@ -10,37 +10,37 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   const staticPages = [
     {
-      url: '',
+      url: '/',
       changefreq: 'daily',
       priority: '1.0',
     },
     {
-      url: '/hakkimizda',
+      url: '/hakkimizda/',
       changefreq: 'weekly',
       priority: '0.9',
     },
     {
-      url: '/dijital-cozumler',
+      url: '/dijital-cozumler/',
       changefreq: 'weekly',
       priority: '0.9',
     },
     {
-      url: '/urunler',
+      url: '/urunler/',
       changefreq: 'weekly',
       priority: '0.9',
     },
     {
-      url: '/projelendirme',
+      url: '/projelendirme/',
       changefreq: 'weekly',
       priority: '0.8',
     },
     {
-      url: '/iletisim',
+      url: '/iletisim/',
       changefreq: 'monthly',
       priority: '0.7',
     },
     {
-      url: '/gizlilik-politikasi',
+      url: '/gizlilik-politikasi/',
       changefreq: 'yearly',
       priority: '0.3',
     },

@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { GA_MEASUREMENT_ID } from "@/lib/gtag";
 
 export default function Document() {
   return (
@@ -17,6 +18,28 @@ export default function Document() {
         <meta name="geo.placename" content="Rize" />
         <meta name="geo.position" content="41.0201;40.5234" />
         <meta name="ICBM" content="41.0201, 40.5234" />
+
+        {/* Google Analytics */}
+        {GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX' && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_MEASUREMENT_ID}', {
+                    page_path: window.location.pathname,
+                  });
+                `,
+              }}
+            />
+          </>
+        )}
       </Head>
       <body className="antialiased">
         <Main />
