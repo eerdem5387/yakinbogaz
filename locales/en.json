@@ -125,7 +125,11 @@
     "contactUs": "Contact Us",
     "viewServices": "View Our Services",
     "foundersTitle": "Our Founders",
-    "foundersSubtitle": "The visionary team that brought YakınBoğaz to life"
+    "foundersSubtitle": "The visionary team that brought YakınBoğaz to life",
+    "founder1Name": "Emin Usta",
+    "founder1Role": "Founder - Kurucu",
+    "founder2Name": "Atty. Abdulkadir Erdem",
+    "founder2Role": "Board Member and Legal Advisor"
   },
   "solutions": {
     "title": "Digital Solutions",

@@ -132,7 +132,10 @@ export default function Hakkimizda() {
             </motion.div>
 
             <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              {[1, 2].map((founder, index) => (
+              {[
+                { nameKey: 'founder1Name', roleKey: 'founder1Role', image: '/img/founders/emin-usta.png' },
+                { nameKey: 'founder2Name', roleKey: 'founder2Role', image: '/img/founders/av-abdulkadir-erdem.png' }
+              ].map((founder, index) => (
                 <motion.div
                   key={index}
                   className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-600 text-center"
@@ -143,17 +146,17 @@ export default function Hakkimizda() {
                 >
                   <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-amber-500 dark:border-amber-400 shadow-lg">
                     <Image
-                      src={`/img/founders/founder-${founder}.jpg`}
-                      alt={`Kurucu ${founder}`}
+                      src={founder.image}
+                      alt={t(`about.${founder.nameKey}`)}
                       fill
                       className="object-cover"
                     />
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold mb-2 text-gray-900 dark:text-white">
-                    Kurucu {founder}
+                    {t(`about.${founder.nameKey}`)}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base">
-                    YakınBoğaz'ın kurucularından biri
+                    {t(`about.${founder.roleKey}`)}
                   </p>
                 </motion.div>
               ))}

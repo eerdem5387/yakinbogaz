@@ -125,7 +125,11 @@
     "contactUs": "İletişime Geçin",
     "viewServices": "Hizmetlerimizi İncele",
     "foundersTitle": "Kurucularımız",
-    "foundersSubtitle": "YakınBoğaz'ı hayata geçiren vizyoner ekip"
+    "foundersSubtitle": "YakınBoğaz'ı hayata geçiren vizyoner ekip",
+    "founder1Name": "Emin Usta",
+    "founder1Role": "Kurucu - Founder",
+    "founder2Name": "Av. Abdulkadir Erdem",
+    "founder2Role": "Yönetim Kurulu Üyesi ve Hukuk Danışmanı"
   },
   "solutions": {
     "title": "Dijital Çözümler",
