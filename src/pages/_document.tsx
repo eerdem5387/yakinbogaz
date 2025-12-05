@@ -12,7 +12,7 @@ export default function Document() {
         {/* Meta Tags */}
         <meta name="theme-color" content="#2563eb" />
         <meta name="msapplication-TileColor" content="#2563eb" />
-        <meta name="google-site-verification" content="" />
+        <meta name="google-site-verification" content="KEs2SiRax3UjaLfmtv1RO25J7AeEDH3-Y0CUwG6S-uk" />
         <meta name="geo.region" content="TR-53" />
         <meta name="geo.placename" content="Rize" />
         <meta name="geo.position" content="41.0201;40.5234" />
