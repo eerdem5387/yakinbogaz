@@ -233,6 +233,147 @@ export default function Home() {
           </div>
         </motion.section>
 
+        {/* SchoolRoute Hero Section */}
+        <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-6xl mx-auto">
+              <motion.div
+                className="text-center mb-12 md:mb-16"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="flex justify-center mb-6">
+                  <div className="relative w-32 h-32 md:w-40 md:h-40">
+                    <Image
+                      src="/img/scr-logo.png"
+                      alt="SchoolRoute Logo"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6">
+                  {t('home.schoolrouteTitle')}
+                </h2>
+                <p className="text-xl sm:text-2xl md:text-3xl mb-4 opacity-90">
+                  {t('home.schoolrouteSubtitle')}
+                </p>
+                <p className="text-lg sm:text-xl max-w-4xl mx-auto opacity-80 leading-relaxed">
+                  {t('home.schoolrouteDesc')}
+                </p>
+              </motion.div>
+
+              {/* Features Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+                {[
+                  { key: 'schoolrouteFeature1', icon: '📱' },
+                  { key: 'schoolrouteFeature2', icon: '🗺️' },
+                  { key: 'schoolrouteFeature3', icon: '🔔' },
+                  { key: 'schoolrouteFeature4', icon: '🚨' },
+                  { key: 'schoolrouteFeature5', icon: '🎨' },
+                ].map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    <div className="text-4xl mb-4">{feature.icon}</div>
+                    <h3 className="text-xl font-bold mb-2">{t(`home.${feature.key}`)}</h3>
+                    <p className="text-sm opacity-90 leading-relaxed">{t(`home.${feature.key}Desc`)}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Financial Model Section */}
+              <motion.div
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-white/20 mb-12"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+                  {t('home.schoolrouteFinancialTitle')}
+                </h3>
+                <p className="text-lg mb-8 text-center opacity-90 max-w-3xl mx-auto">
+                  {t('home.schoolrouteFinancialDesc')}
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    { key: 'schoolrouteFinancial1', icon: '💰' },
+                    { key: 'schoolrouteFinancial2', icon: '👥' },
+                    { key: 'schoolrouteFinancial3', icon: '📈' },
+                  ].map((item, index) => (
+                    <div key={index} className="text-center">
+                      <div className="text-5xl mb-4">{item.icon}</div>
+                      <h4 className="text-xl font-bold mb-2">{t(`home.${item.key}`)}</h4>
+                      <p className="text-sm opacity-90">{t(`home.${item.key}Desc`)}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Reporting Section */}
+              <motion.div
+                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-white/20 mb-12"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+                  {t('home.schoolrouteReportingTitle')}
+                </h3>
+                <p className="text-lg mb-8 text-center opacity-90 max-w-3xl mx-auto">
+                  {t('home.schoolrouteReportingDesc')}
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[
+                    { key: 'schoolrouteReporting1', icon: '👤' },
+                    { key: 'schoolrouteReporting2', icon: '⏰' },
+                    { key: 'schoolrouteReporting3', icon: '📊' },
+                  ].map((item, index) => (
+                    <div key={index} className="text-center">
+                      <div className="text-5xl mb-4">{item.icon}</div>
+                      <h4 className="text-xl font-bold mb-2">{t(`home.${item.key}`)}</h4>
+                      <p className="text-sm opacity-90">{t(`home.${item.key}Desc`)}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Why SchoolRoute */}
+              <motion.div
+                className="text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                  {t('home.schoolrouteWhyTitle')}
+                </h3>
+                <p className="text-lg md:text-xl max-w-4xl mx-auto opacity-90 leading-relaxed mb-8">
+                  {t('home.schoolrouteWhyDesc')}
+                </p>
+                <Link
+                  href="/urunler#schoolroute"
+                  className="inline-flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg"
+                >
+                  <span>{t('home.viewDetails')}</span>
+                  <FiArrowRight className="w-5 h-5" />
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Hizmetler */}
         <section className="py-16 md:py-24 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -89,10 +89,16 @@ export default function Navbar() {
               </div>
             </motion.div>
             <div className="flex flex-col leading-tight">
-              <span className="text-yellow-400 dark:text-yellow-300 font-bold text-sm md:text-base font-sans tracking-wide uppercase">
+              <span 
+                className="font-bold text-sm md:text-base font-sans tracking-wide uppercase"
+                style={{ color: theme === 'dark' ? '#4d6369' : '#6f949a' }}
+              >
                 Yakın Boğaz
               </span>
-              <span className="text-yellow-400 dark:text-yellow-300 font-bold text-[10px] md:text-xs font-sans tracking-wide uppercase">
+              <span 
+                className="font-bold text-[10px] md:text-xs font-sans tracking-wide uppercase"
+                style={{ color: theme === 'dark' ? '#4d6369' : '#6f949a' }}
+              >
                 {t('nav.tagline')}
               </span>
             </div>

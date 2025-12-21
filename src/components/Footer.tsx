@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import { 
   FiMail, 
   FiPhone, 
@@ -21,6 +22,7 @@ import {
 
 export default function Footer() {
   const { t } = useLanguage();
+  const { theme } = useTheme();
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -97,7 +99,10 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-yellow-400 dark:text-yellow-300">
+              <h3 
+                className="text-xl md:text-2xl font-bold"
+                style={{ color: theme === 'dark' ? '#4d6369' : '#6f949a' }}
+              >
                 <span className="block">Yakın Boğaz</span>
                 <span className="block text-base md:text-lg">E-Ticaret ve Yazılım</span>
               </h3>

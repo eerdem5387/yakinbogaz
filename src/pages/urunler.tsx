@@ -13,16 +13,23 @@ export default function Urunler() {
     {
       id: "schoolroute",
       title: "SchoolRoute",
-      subtitle: "Okul Servis Yönetiminde, Kontrol Sizde",
-      description: "School Route, okul servis süreçlerinin daha güvenli, şeffaf ve verimli bir şekilde yönetilmesini sağlar. Günümüzde çocukların güvenli bir şekilde okula ulaşması ve eve dönüşleri, veliler ve okul yönetimleri için en önemli öncelikler arasındadır.",
+      subtitle: t('home.schoolrouteSubtitle'),
+      description: t('home.schoolrouteDesc'),
       logo: "/img/scr-logo.png",
       gradient: "from-blue-500 to-blue-600",
       features: [
-        "Gerçek Zamanlı Konum Takibi",
-        "Rota Optimizasyonu ve Verimlilik",
-        "Anlık Bildirimler ve Uyarılar",
-        "Öğrenci ve Servis Güvenliği Takibi",
-        "Veri Analizi ve Raporlama Özelliği",
+        t('home.schoolrouteFeature1'),
+        t('home.schoolrouteFeature2'),
+        t('home.schoolrouteFeature3'),
+        t('home.schoolrouteFeature4'),
+        t('home.schoolrouteFeature5'),
+      ],
+      featureDescriptions: [
+        t('home.schoolrouteFeature1Desc'),
+        t('home.schoolrouteFeature2Desc'),
+        t('home.schoolrouteFeature3Desc'),
+        t('home.schoolrouteFeature4Desc'),
+        t('home.schoolrouteFeature5Desc'),
       ],
       benefits: [
         "Güvenliğin Artırılması",
@@ -283,30 +290,99 @@ export default function Urunler() {
                     <h3 className="text-3xl font-bold mb-4 text-gray-800">{product.title}</h3>
                     <p className="text-lg text-gray-600 mb-6 leading-relaxed">{product.description}</p>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                      <div>
-                        <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.features')}</h4>
-                        <ul className="space-y-2">
-                          {product.features.slice(0, 4).map((feature, idx) => (
-                            <li key={idx} className="flex items-center text-sm text-gray-700">
-                              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
+                    {/* Detailed Features for SchoolRoute */}
+                    {product.id === 'schoolroute' && product.featureDescriptions ? (
+                      <div className="space-y-6 mb-8">
+                        <div>
+                          <h4 className="text-xl font-semibold mb-4 text-gray-800">{t('home.schoolrouteFinancialTitle')}</h4>
+                          <p className="text-gray-600 mb-4 leading-relaxed">{t('home.schoolrouteFinancialDesc')}</p>
+                          <div className="grid grid-cols-1 gap-4">
+                            <div className="bg-blue-50 p-4 rounded-lg">
+                              <h5 className="font-semibold text-gray-800 mb-2">{t('home.schoolrouteFinancial1')}</h5>
+                              <p className="text-sm text-gray-600">{t('home.schoolrouteFinancial1Desc')}</p>
+                            </div>
+                            <div className="bg-blue-50 p-4 rounded-lg">
+                              <h5 className="font-semibold text-gray-800 mb-2">{t('home.schoolrouteFinancial2')}</h5>
+                              <p className="text-sm text-gray-600">{t('home.schoolrouteFinancial2Desc')}</p>
+                            </div>
+                            <div className="bg-blue-50 p-4 rounded-lg">
+                              <h5 className="font-semibold text-gray-800 mb-2">{t('home.schoolrouteFinancial3')}</h5>
+                              <p className="text-sm text-gray-600">{t('home.schoolrouteFinancial3Desc')}</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <h4 className="text-xl font-semibold mb-4 text-gray-800">{t('home.schoolrouteReportingTitle')}</h4>
+                          <p className="text-gray-600 mb-4 leading-relaxed">{t('home.schoolrouteReportingDesc')}</p>
+                          <div className="space-y-3">
+                            <div className="flex items-start">
+                              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></span>
+                              <div>
+                                <h5 className="font-semibold text-gray-800">{t('home.schoolrouteReporting1')}</h5>
+                                <p className="text-sm text-gray-600">{t('home.schoolrouteReporting1Desc')}</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start">
+                              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></span>
+                              <div>
+                                <h5 className="font-semibold text-gray-800">{t('home.schoolrouteReporting2')}</h5>
+                                <p className="text-sm text-gray-600">{t('home.schoolrouteReporting2Desc')}</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start">
+                              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></span>
+                              <div>
+                                <h5 className="font-semibold text-gray-800">{t('home.schoolrouteReporting3')}</h5>
+                                <p className="text-sm text-gray-600">{t('home.schoolrouteReporting3Desc')}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="text-xl font-semibold mb-4 text-gray-800">{t('products.features')}</h4>
+                          <div className="space-y-4">
+                            {product.features.map((feature, idx) => (
+                              <div key={idx} className="bg-gray-50 p-4 rounded-lg">
+                                <h5 className="font-semibold text-gray-800 mb-2">{feature}</h5>
+                                <p className="text-sm text-gray-600">{product.featureDescriptions?.[idx]}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200">
+                          <h4 className="text-xl font-semibold mb-3 text-gray-800">{t('home.schoolrouteWhyTitle')}</h4>
+                          <p className="text-gray-700 leading-relaxed">{t('home.schoolrouteWhyDesc')}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.benefits')}</h4>
-                        <ul className="space-y-2">
-                          {product.benefits.map((benefit, idx) => (
-                            <li key={idx} className="flex items-center text-sm text-gray-700">
-                              <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                              {benefit}
-                            </li>
-                          ))}
-                        </ul>
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                          <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.features')}</h4>
+                          <ul className="space-y-2">
+                            {product.features.slice(0, 4).map((feature, idx) => (
+                              <li key={idx} className="flex items-center text-sm text-gray-700">
+                                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.benefits')}</h4>
+                          <ul className="space-y-2">
+                            {product.benefits.map((benefit, idx) => (
+                              <li key={idx} className="flex items-center text-sm text-gray-700">
+                                <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                {benefit}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     <div className="flex flex-col sm:flex-row gap-4">
                       {product.appStore && (
