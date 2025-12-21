@@ -91,13 +91,13 @@ export default function Navbar() {
             <div className="flex flex-col leading-tight">
               <span 
                 className="font-bold text-sm md:text-base font-sans tracking-wide uppercase"
-                style={{ color: theme === 'dark' ? '#4d6369' : '#6f949a' }}
+                style={{ color: theme === 'dark' ? '#b8d4e0' : '#6f949a' }}
               >
                 Yakın Boğaz
               </span>
               <span 
                 className="font-bold text-[10px] md:text-xs font-sans tracking-wide uppercase"
-                style={{ color: theme === 'dark' ? '#4d6369' : '#6f949a' }}
+                style={{ color: theme === 'dark' ? '#b8d4e0' : '#6f949a' }}
               >
                 {t('nav.tagline')}
               </span>

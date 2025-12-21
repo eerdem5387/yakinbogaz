@@ -101,7 +101,7 @@ export default function Footer() {
               </div>
               <h3 
                 className="text-xl md:text-2xl font-bold"
-                style={{ color: theme === 'dark' ? '#4d6369' : '#6f949a' }}
+                style={{ color: theme === 'dark' ? '#b8d4e0' : '#6f949a' }}
               >
                 <span className="block">Yakın Boğaz</span>
                 <span className="block text-base md:text-lg">E-Ticaret ve Yazılım</span>
