@@ -25,7 +25,16 @@ import {
   FiMonitor,
   FiDatabase,
   FiMapPin,
-  FiCpu
+  FiCpu,
+  FiMap,
+  FiBell,
+  FiAlertTriangle,
+  FiSettings,
+  FiDollarSign,
+  FiBarChart,
+  FiUserCheck,
+  FiClock,
+  FiFileText
 } from 'react-icons/fi';
 
 export default function Home() {
@@ -269,25 +278,30 @@ export default function Home() {
               {/* Features Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
                 {[
-                  { key: 'schoolrouteFeature1', icon: '📱' },
-                  { key: 'schoolrouteFeature2', icon: '🗺️' },
-                  { key: 'schoolrouteFeature3', icon: '🔔' },
-                  { key: 'schoolrouteFeature4', icon: '🚨' },
-                  { key: 'schoolrouteFeature5', icon: '🎨' },
-                ].map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                    <div className="text-4xl mb-4">{feature.icon}</div>
-                    <h3 className="text-xl font-bold mb-2">{t(`home.${feature.key}`)}</h3>
-                    <p className="text-sm opacity-90 leading-relaxed">{t(`home.${feature.key}Desc`)}</p>
-                  </motion.div>
-                ))}
+                  { key: 'schoolrouteFeature1', icon: FiSmartphone },
+                  { key: 'schoolrouteFeature2', icon: FiMap },
+                  { key: 'schoolrouteFeature3', icon: FiBell },
+                  { key: 'schoolrouteFeature4', icon: FiAlertTriangle },
+                  { key: 'schoolrouteFeature5', icon: FiSettings },
+                ].map((feature, index) => {
+                  const Icon = feature.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                    >
+                      <div className="mb-4 flex justify-center">
+                        <Icon className="w-12 h-12 text-white" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{t(`home.${feature.key}`)}</h3>
+                      <p className="text-sm opacity-90 leading-relaxed">{t(`home.${feature.key}Desc`)}</p>
+                    </motion.div>
+                  );
+                })}
               </div>
 
               {/* Financial Model Section */}
@@ -306,16 +320,21 @@ export default function Home() {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
-                    { key: 'schoolrouteFinancial1', icon: '💰' },
-                    { key: 'schoolrouteFinancial2', icon: '👥' },
-                    { key: 'schoolrouteFinancial3', icon: '📈' },
-                  ].map((item, index) => (
-                    <div key={index} className="text-center">
-                      <div className="text-5xl mb-4">{item.icon}</div>
-                      <h4 className="text-xl font-bold mb-2">{t(`home.${item.key}`)}</h4>
-                      <p className="text-sm opacity-90">{t(`home.${item.key}Desc`)}</p>
-                    </div>
-                  ))}
+                    { key: 'schoolrouteFinancial1', icon: FiDollarSign },
+                    { key: 'schoolrouteFinancial2', icon: FiUsers },
+                    { key: 'schoolrouteFinancial3', icon: FiBarChart },
+                  ].map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                      <div key={index} className="text-center">
+                        <div className="mb-4 flex justify-center">
+                          <Icon className="w-16 h-16 text-white" />
+                        </div>
+                        <h4 className="text-xl font-bold mb-2">{t(`home.${item.key}`)}</h4>
+                        <p className="text-sm opacity-90">{t(`home.${item.key}Desc`)}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </motion.div>
 
@@ -335,16 +354,21 @@ export default function Home() {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
-                    { key: 'schoolrouteReporting1', icon: '👤' },
-                    { key: 'schoolrouteReporting2', icon: '⏰' },
-                    { key: 'schoolrouteReporting3', icon: '📊' },
-                  ].map((item, index) => (
-                    <div key={index} className="text-center">
-                      <div className="text-5xl mb-4">{item.icon}</div>
-                      <h4 className="text-xl font-bold mb-2">{t(`home.${item.key}`)}</h4>
-                      <p className="text-sm opacity-90">{t(`home.${item.key}Desc`)}</p>
-                    </div>
-                  ))}
+                    { key: 'schoolrouteReporting1', icon: FiUserCheck },
+                    { key: 'schoolrouteReporting2', icon: FiClock },
+                    { key: 'schoolrouteReporting3', icon: FiFileText },
+                  ].map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                      <div key={index} className="text-center">
+                        <div className="mb-4 flex justify-center">
+                          <Icon className="w-16 h-16 text-white" />
+                        </div>
+                        <h4 className="text-xl font-bold mb-2">{t(`home.${item.key}`)}</h4>
+                        <p className="text-sm opacity-90">{t(`home.${item.key}Desc`)}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </motion.div>
 
