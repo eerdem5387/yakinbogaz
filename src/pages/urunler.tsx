@@ -5,7 +5,7 @@ import Seo from '@/components/Seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { FiMapPin, FiCpu } from 'react-icons/fi';
+import { FiMapPin, FiCpu, FiArrowRight, FiPackage, FiClipboard, FiCreditCard, FiUsers, FiDatabase, FiTrendingUp, FiBook, FiVideo, FiEdit } from 'react-icons/fi';
 
 export default function Urunler() {
   const { t } = useLanguage();
@@ -46,7 +46,7 @@ export default function Urunler() {
       subtitle: "AKER Temel Matematik",
       description: "Matematik öğrenmeyi kolaylaştıran mobil eğitim platformu. Her soruya özel çözüm videoları, çizim ile çözüm ekranı ve ilerleme takibi özellikleriyle etkili bir öğrenme deneyimi sunar.",
       logo: "/img/mobilders.jpeg",
-      gradient: "from-purple-500 to-purple-600",
+      gradient: "from-orange-500 to-orange-600",
       features: [
         "Temel Matematik: Hiç Matematik Bilmeyenler İçin",
         "Her Soruya Özel Çözüm Videosu",
@@ -74,32 +74,32 @@ export default function Urunler() {
     {
       title: "Ürün Yönetimi",
       description: "Kapsamlı ürün katalog yönetimi",
-      icon: "📦"
+      icon: FiPackage
     },
     {
       title: "Sipariş Takibi",
       description: "Gerçek zamanlı sipariş yönetimi",
-      icon: "📋"
+      icon: FiClipboard
     },
     {
       title: "Ödeme Sistemleri",
       description: "Güvenli ödeme entegrasyonları",
-      icon: "💳"
+      icon: FiCreditCard
     },
     {
       title: "Müşteri Yönetimi",
       description: "CRM ve müşteri ilişkileri",
-      icon: "👥"
+      icon: FiUsers
     },
     {
       title: "Stok Yönetimi",
       description: "Otomatik stok takip sistemi",
-      icon: "📊"
+      icon: FiDatabase
     },
     {
       title: "Raporlama",
       description: "Detaylı satış ve analiz raporları",
-      icon: "📈"
+      icon: FiTrendingUp
     }
   ];
 
@@ -115,7 +115,7 @@ export default function Urunler() {
       <main>
         {/* Hero Section */}
         <motion.section 
-          className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50"
+          className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -127,10 +127,10 @@ export default function Urunler() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
                 {t('products.title')}
               </h1>
-              <p className="text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 {t('products.subtitle')}
               </p>
             </motion.div>
@@ -138,7 +138,7 @@ export default function Urunler() {
         </motion.section>
 
         {/* Navigasyon ve AI Teknolojileri */}
-        <section className="py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+        <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-800 dark:to-gray-900">
           <div className="container mx-auto px-6">
             <motion.div
               className="text-center mb-16"
@@ -147,10 +147,10 @@ export default function Urunler() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                 {t('products.navigationAiTechTitle')}
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 {t('products.navigationAiTechSubtitle')}
               </p>
             </motion.div>
@@ -175,11 +175,11 @@ export default function Urunler() {
                 </div>
 
                 <div className="lg:w-1/2">
-                  <h3 className="text-3xl font-bold mb-4 text-gray-800">{t('products.ccnsTitle')}</h3>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">{t('products.ccnsDescription')}</p>
+                  <h3 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">{t('products.ccnsTitle')}</h3>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{t('products.ccnsDescription')}</p>
                   
                   <div className="mb-8">
-                    <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.features')}</h4>
+                    <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white">{t('products.features')}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {[
                         t('products.ccnsFeature1'),
@@ -187,7 +187,7 @@ export default function Urunler() {
                         t('products.ccnsFeature3'),
                         t('products.ccnsFeature4')
                       ].map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-gray-700">
+                        <div key={idx} className="flex items-center text-sm text-gray-700 dark:text-gray-300">
                           <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
                           {feature}
                         </div>
@@ -216,11 +216,11 @@ export default function Urunler() {
                 </div>
 
                 <div className="lg:w-1/2">
-                  <h3 className="text-3xl font-bold mb-4 text-gray-800">{t('products.ccaiTitle')}</h3>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">{t('products.ccaiDescription')}</p>
+                  <h3 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">{t('products.ccaiTitle')}</h3>
+                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{t('products.ccaiDescription')}</p>
                   
                   <div className="mb-8">
-                    <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.features')}</h4>
+                    <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white">{t('products.features')}</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {[
                         t('products.ccaiFeature1'),
@@ -228,7 +228,7 @@ export default function Urunler() {
                         t('products.ccaiFeature3'),
                         t('products.ccaiFeature4')
                       ].map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-gray-700">
+                        <div key={idx} className="flex items-center text-sm text-gray-700 dark:text-gray-300">
                           <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
                           {feature}
                         </div>
@@ -242,7 +242,7 @@ export default function Urunler() {
         </section>
 
         {/* Eğitim Ürünleri */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-6">
             <motion.div
               className="text-center mb-16"
@@ -251,10 +251,10 @@ export default function Urunler() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                 {t('products.educationTechTitle')}
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 {t('products.educationTechSubtitle')}
               </p>
             </motion.div>
@@ -263,14 +263,14 @@ export default function Urunler() {
               {products.map((product, index) => (
                 <motion.div
                   key={product.id}
-                  className={`flex flex-col lg:flex-row gap-12 items-center ${
-                    index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                  }`}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
                 >
+                  <div className={`flex flex-col lg:flex-row gap-12 items-center ${
+                    index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                  }`}>
                   <div className="lg:w-1/2">
                     <div className={`bg-gradient-to-r ${product.gradient} p-8 rounded-2xl text-white text-center`}>
                       <div className="h-32 relative mb-6">
@@ -287,121 +287,103 @@ export default function Urunler() {
                   </div>
 
                   <div className="lg:w-1/2">
-                    <h3 className="text-3xl font-bold mb-4 text-gray-800">{product.title}</h3>
-                    <p className="text-lg text-gray-600 mb-6 leading-relaxed">{product.description}</p>
+                    <h3 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">{product.title}</h3>
+                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{product.description}</p>
                     
-                    {/* Detailed Features for SchoolRoute */}
-                    {product.id === 'schoolroute' && product.featureDescriptions ? (
-                      <div className="space-y-6 mb-8">
-                        <div>
-                          <h4 className="text-xl font-semibold mb-4 text-gray-800">{t('home.schoolrouteFinancialTitle')}</h4>
-                          <p className="text-gray-600 mb-4 leading-relaxed">{t('home.schoolrouteFinancialDesc')}</p>
-                          <div className="grid grid-cols-1 gap-4">
-                            <div className="bg-blue-50 p-4 rounded-lg">
-                              <h5 className="font-semibold text-gray-800 mb-2">{t('home.schoolrouteFinancial1')}</h5>
-                              <p className="text-sm text-gray-600">{t('home.schoolrouteFinancial1Desc')}</p>
-                            </div>
-                            <div className="bg-blue-50 p-4 rounded-lg">
-                              <h5 className="font-semibold text-gray-800 mb-2">{t('home.schoolrouteFinancial2')}</h5>
-                              <p className="text-sm text-gray-600">{t('home.schoolrouteFinancial2Desc')}</p>
-                            </div>
-                            <div className="bg-blue-50 p-4 rounded-lg">
-                              <h5 className="font-semibold text-gray-800 mb-2">{t('home.schoolrouteFinancial3')}</h5>
-                              <p className="text-sm text-gray-600">{t('home.schoolrouteFinancial3Desc')}</p>
-                            </div>
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <h4 className="text-xl font-semibold mb-4 text-gray-800">{t('home.schoolrouteReportingTitle')}</h4>
-                          <p className="text-gray-600 mb-4 leading-relaxed">{t('home.schoolrouteReportingDesc')}</p>
-                          <div className="space-y-3">
-                            <div className="flex items-start">
-                              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></span>
-                              <div>
-                                <h5 className="font-semibold text-gray-800">{t('home.schoolrouteReporting1')}</h5>
-                                <p className="text-sm text-gray-600">{t('home.schoolrouteReporting1Desc')}</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start">
-                              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></span>
-                              <div>
-                                <h5 className="font-semibold text-gray-800">{t('home.schoolrouteReporting2')}</h5>
-                                <p className="text-sm text-gray-600">{t('home.schoolrouteReporting2Desc')}</p>
-                              </div>
-                            </div>
-                            <div className="flex items-start">
-                              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></span>
-                              <div>
-                                <h5 className="font-semibold text-gray-800">{t('home.schoolrouteReporting3')}</h5>
-                                <p className="text-sm text-gray-600">{t('home.schoolrouteReporting3Desc')}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                      <div>
+                        <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white">{t('products.features')}</h4>
+                        <ul className="space-y-2">
+                          {product.features.slice(0, 4).map((feature, idx) => (
+                            <li key={idx} className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                              <span className={`w-2 h-2 rounded-full mr-3 ${product.id === 'schoolroute' ? 'bg-blue-500' : product.id === 'mobilders' ? 'bg-orange-500' : 'bg-purple-500'}`}></span>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white">{t('products.benefits')}</h4>
+                        <ul className="space-y-2">
+                          {product.benefits.map((benefit, idx) => (
+                            <li key={idx} className="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                              <span className={`w-2 h-2 rounded-full mr-3 ${product.id === 'schoolroute' ? 'bg-blue-500' : product.id === 'mobilders' ? 'bg-orange-500' : 'bg-purple-500'}`}></span>
+                              {benefit}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
 
-                        <div>
-                          <h4 className="text-xl font-semibold mb-4 text-gray-800">{t('products.features')}</h4>
-                          <div className="space-y-4">
-                            {product.features.map((feature, idx) => (
-                              <div key={idx} className="bg-gray-50 p-4 rounded-lg">
-                                <h5 className="font-semibold text-gray-800 mb-2">{feature}</h5>
-                                <p className="text-sm text-gray-600">{product.featureDescriptions?.[idx]}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg border border-blue-200">
-                          <h4 className="text-xl font-semibold mb-3 text-gray-800">{t('home.schoolrouteWhyTitle')}</h4>
-                          <p className="text-gray-700 leading-relaxed">{t('home.schoolrouteWhyDesc')}</p>
-                        </div>
+                    {product.id === 'schoolroute' ? (
+                      <div className="flex justify-start">
+                        <Link 
+                          href="https://schoolroute.net/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center space-x-2"
+                        >
+                          <span>İncele</span>
+                          <FiArrowRight className="w-5 h-5" />
+                        </Link>
                       </div>
                     ) : (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div>
-                          <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.features')}</h4>
-                          <ul className="space-y-2">
-                            {product.features.slice(0, 4).map((feature, idx) => (
-                              <li key={idx} className="flex items-center text-sm text-gray-700">
-                                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                                {feature}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div>
-                          <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('products.benefits')}</h4>
-                          <ul className="space-y-2">
-                            {product.benefits.map((benefit, idx) => (
-                              <li key={idx} className="flex items-center text-sm text-gray-700">
-                                <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                                {benefit}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        {product.appStore && (
+                          <Link 
+                            href={product.appStore}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 rounded-xl px-5 py-4 flex items-center gap-4 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 min-w-[240px]"
+                          >
+                            <div className="relative w-12 h-12 flex-shrink-0 bg-white dark:bg-gray-700 rounded-lg p-2 shadow-sm">
+                              <Image
+                                src="/app-store.png"
+                                alt="App Store"
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                            <div className="flex flex-col flex-1">
+                              <span className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-wide group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-medium">
+                                {t('products.downloadOn')}
+                              </span>
+                              <span className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                {t('products.downloadAppStore')}
+                              </span>
+                            </div>
+                            <FiArrowRight className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
+                          </Link>
+                        )}
+                        {product.playStore && (
+                          <Link 
+                            href={product.playStore}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`group bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 ${product.id === 'mobilders' ? 'hover:border-orange-500 dark:hover:border-orange-500' : 'hover:border-purple-500 dark:hover:border-purple-500'} rounded-xl px-5 py-4 flex items-center gap-4 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 min-w-[240px]`}
+                          >
+                            <div className="relative w-12 h-12 flex-shrink-0 bg-white dark:bg-gray-700 rounded-lg p-2 shadow-sm">
+                              <Image
+                                src="/google-play.png"
+                                alt="Google Play"
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                            <div className="flex flex-col flex-1">
+                              <span className={`text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-wide ${product.id === 'mobilders' ? 'group-hover:text-orange-600 dark:group-hover:text-orange-400' : 'group-hover:text-purple-600 dark:group-hover:text-purple-400'} transition-colors font-medium`}>
+                                {t('products.downloadOn')}
+                              </span>
+                              <span className={`text-lg font-bold text-gray-900 dark:text-white ${product.id === 'mobilders' ? 'group-hover:text-orange-600 dark:group-hover:text-orange-400' : 'group-hover:text-purple-600 dark:group-hover:text-purple-400'} transition-colors`}>
+                                {t('products.downloadGooglePlay')}
+                              </span>
+                            </div>
+                            <FiArrowRight className={`w-5 h-5 text-gray-400 dark:text-gray-500 ${product.id === 'mobilders' ? 'group-hover:text-orange-600 dark:group-hover:text-orange-400' : 'group-hover:text-purple-600 dark:group-hover:text-purple-400'} group-hover:translate-x-1 transition-all flex-shrink-0`} />
+                          </Link>
+                        )}
                       </div>
                     )}
-
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      {product.appStore && (
-                        <Link 
-                          href={product.appStore}
-                          className="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300 text-center"
-                        >
-                          App Store
-                        </Link>
-                      )}
-                      {product.playStore && (
-                        <Link 
-                          href={product.playStore}
-                          className="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-300 text-center"
-                        >
-                          Google Play
-                        </Link>
-                      )}
-                    </div>
+                  </div>
                   </div>
                 </motion.div>
               ))}
@@ -411,7 +393,7 @@ export default function Urunler() {
 
 
         {/* E-Ticaret Modülleri */}
-        <section className="py-24 bg-gradient-to-br from-blue-50 to-purple-50">
+        <section className="py-24 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
           <div className="container mx-auto px-6">
             <motion.div
               className="text-center mb-16"
@@ -420,10 +402,10 @@ export default function Urunler() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                 {t('products.ecommerceModulesTitle')}
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 {t('products.ecommerceModulesSubtitle')}
               </p>
             </motion.div>
@@ -432,38 +414,27 @@ export default function Urunler() {
               {ecommerceModules.map((module, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <div className="text-4xl mb-4">{module.icon}</div>
-                  <h3 className="text-xl font-bold mb-3 text-gray-800">{module.title}</h3>
-                  <p className="text-gray-600">{module.description}</p>
+                  <div className="mb-4">
+                    <module.icon className="w-12 h-12 text-blue-600" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{module.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{module.description}</p>
                 </motion.div>
               ))}
             </div>
 
-            <motion.div
-              className="text-center mt-12"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Link 
-                href="/dijital-cozumler#e-ticaret"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 inline-block"
-              >
-                {t('products.viewEcommerceSolutions')}
-              </Link>
-            </motion.div>
+
           </div>
         </section>
 
         {/* MobilDers Özel Bölüm */}
-        <section className="py-24 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+        <section className="py-24 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
           <div className="container mx-auto px-6">
             <div className="max-w-6xl mx-auto">
               <motion.div
@@ -486,39 +457,44 @@ export default function Urunler() {
                   {
                     title: t('products.basicMath'),
                     description: t('products.basicMathDesc'),
-                    icon: "📚"
+                    icon: FiBook
                   },
                   {
                     title: t('products.videoSolutions'),
                     description: t('products.videoSolutionsDesc'),
-                    icon: "🎥"
+                    icon: FiVideo
                   },
                   {
                     title: t('products.drawingSolution'),
                     description: t('products.drawingSolutionDesc'),
-                    icon: "✏️"
+                    icon: FiEdit
                   },
                   {
                     title: t('products.progressTracking'),
                     description: t('products.progressTrackingDesc'),
-                    icon: "📊"
+                    icon: FiTrendingUp
                   }
-                ].map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    className="text-center"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
-                      <div className="text-4xl mb-4">{feature.icon}</div>
-                      <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                      <p className="text-sm opacity-90">{feature.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
+                ].map((feature, index) => {
+                  const IconComponent = feature.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      className="text-center"
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                    >
+                      <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300">
+                        <div className="mb-4 flex justify-center">
+                          <IconComponent className="w-12 h-12 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
+                        <p className="text-sm opacity-90">{feature.description}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
 
               <motion.div
@@ -528,18 +504,54 @@ export default function Urunler() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <Link 
                     href="https://apps.apple.com/tr/app/mobilders-temel-matematik/id6747803131?l=tr"
-                    className="bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 rounded-xl px-5 py-4 flex items-center gap-4 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 min-w-[240px]"
                   >
-                    {t('products.downloadAppStore')}
+                    <div className="relative w-12 h-12 flex-shrink-0 bg-white dark:bg-gray-700 rounded-lg p-2 shadow-sm">
+                      <Image
+                        src="/app-store.png"
+                        alt="App Store"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="flex flex-col flex-1">
+                      <span className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-wide group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors font-medium">
+                        {t('products.downloadOn')}
+                      </span>
+                      <span className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                        {t('products.downloadAppStore')}
+                      </span>
+                    </div>
+                    <FiArrowRight className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-orange-600 dark:group-hover:text-orange-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
                   </Link>
                   <Link 
                     href="https://play.google.com/store/apps/details?id=com.ismailkart53.ebook"
-                    className="bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 rounded-xl px-5 py-4 flex items-center gap-4 transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 min-w-[240px]"
                   >
-                    {t('products.downloadGooglePlay')}
+                    <div className="relative w-12 h-12 flex-shrink-0 bg-white dark:bg-gray-700 rounded-lg p-2 shadow-sm">
+                      <Image
+                        src="/google-play.png"
+                        alt="Google Play"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="flex flex-col flex-1">
+                      <span className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-wide group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors font-medium">
+                        {t('products.downloadOn')}
+                      </span>
+                      <span className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                        {t('products.downloadGooglePlay')}
+                      </span>
+                    </div>
+                    <FiArrowRight className="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-orange-600 dark:group-hover:text-orange-400 group-hover:translate-x-1 transition-all flex-shrink-0" />
                   </Link>
                 </div>
               </motion.div>
@@ -547,56 +559,6 @@ export default function Urunler() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-24 bg-white">
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.h2 
-                className="text-4xl lg:text-5xl font-bold mb-6"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                {t('products.ctaTitle1')}
-                <span className="block bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                  {t('products.ctaTitle2')}
-                </span>
-              </motion.h2>
-              
-              <motion.p 
-                className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                {t('products.ctaDescription')}
-              </motion.p>
-              
-              <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-center"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <Link 
-                  href="/iletisim"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  {t('products.requestDemo')}
-                </Link>
-                <Link 
-                  href="/gizlilik-politikasi"
-                  className="border-2 border-gray-300 text-gray-700 px-10 py-4 rounded-xl font-semibold text-lg hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
-                >
-                  Gizlilik Politikası
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-        </section>
       </main>
     </Layout>
   );

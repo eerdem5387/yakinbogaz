@@ -101,8 +101,8 @@ export default function Iletisim() {
     <Layout>
       <Seo
         title="İletişim - YakınBoğaz Software"
-        description="YakınBoğaz Software ile iletişime geçin. Ücretsiz danışmanlık, proje teklifi ve teknik destek için bizimle iletişime geçin. Rize, Türkiye."
-        keywords="iletişim, yakınboğaz iletişim, yazılım danışmanlığı, ücretsiz teklif, teknik destek, Rize yazılım şirketi"
+        description="YakınBoğaz Software ile iletişime geçin. Proje teklifi ve teknik destek için bizimle iletişime geçin. Rize, Türkiye."
+        keywords="iletişim, yakınboğaz iletişim, yazılım danışmanlığı, proje teklifi, teknik destek, Rize yazılım şirketi"
         image="/img/yb-logo.png"
       />
       
@@ -549,7 +549,7 @@ export default function Iletisim() {
           >
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-6 relative overflow-hidden">
               {/* Gradient Background */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600"></div>
               
               {/* Content */}
               <div className="flex items-start space-x-4">
@@ -560,7 +560,7 @@ export default function Iletisim() {
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                   className="flex-shrink-0"
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
                     <FiCheckCircle className="w-8 h-8 text-white" />
                   </div>
                 </motion.div>
@@ -592,7 +592,7 @@ export default function Iletisim() {
                 initial={{ width: "100%" }}
                 animate={{ width: "0%" }}
                 transition={{ duration: 4, ease: "linear" }}
-                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-600"
+                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600"
               />
             </div>
           </motion.div>

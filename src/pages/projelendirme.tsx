@@ -42,7 +42,7 @@ export default function Projelendirme() {
       title: t('home.customSoftwareTitle'),
       description: t('home.customSoftwareDesc'),
       icon: <FiCode className="w-12 h-12" />,
-      gradient: "from-green-500 to-green-600",
+      gradient: "from-blue-500 to-blue-600",
       features: [
         t('home.customDevelopment'),
         t('home.processAutomation'),
@@ -56,7 +56,7 @@ export default function Projelendirme() {
       title: t('home.webToMobileTitle'),
       description: t('home.webToMobileDesc'),
       icon: <FiSmartphone className="w-12 h-12" />,
-      gradient: "from-orange-500 to-orange-600",
+      gradient: "from-purple-500 to-purple-600",
       features: [
         t('home.mobileCompatibility'),
         t('home.pwaSupport'),
@@ -124,7 +124,7 @@ export default function Projelendirme() {
       <main>
         {/* Hero Section */}
         <motion.section 
-          className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50"
+          className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -136,35 +136,21 @@ export default function Projelendirme() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
                 {t('projects.title1')}
                 <span className="block bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
                   {t('projects.title2')}
                 </span>
               </h1>
-              <p className="text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                 {t('projects.subtitle')}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/iletisim"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  {t('projects.freeConsultation')}
-                </Link>
-                <Link 
-                  href="#hizmetlerimiz"
-                  className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
-                >
-                  {t('projects.viewServices')}
-                </Link>
-              </div>
             </motion.div>
           </div>
         </motion.section>
 
         {/* Services Section */}
-        <section id="hizmetlerimiz" className="py-24 bg-white">
+        <section id="hizmetlerimiz" className="py-24 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-6">
             <motion.div
               className="text-center mb-16"
@@ -173,10 +159,10 @@ export default function Projelendirme() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                 {t('projects.servicesTitle')}
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 {t('projects.servicesSubtitle')}
               </p>
             </motion.div>
@@ -208,13 +194,13 @@ export default function Projelendirme() {
                   </div>
 
                   <div className="lg:w-1/2">
-                    <h3 className="text-3xl font-bold mb-4 text-gray-800">{service.title}</h3>
+                    <h3 className="text-3xl font-bold mb-4 text-gray-800 dark:text-white">{service.title}</h3>
                     
                     <div className="mb-8">
-                      <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('projects.features')}</h4>
+                      <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white">{t('projects.features')}</h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {service.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center text-sm text-gray-700">
+                          <div key={idx} className="flex items-center text-sm text-gray-700 dark:text-gray-300">
                             <FiCheck className="w-4 h-4 text-blue-500 mr-3 flex-shrink-0" />
                             {feature}
                           </div>
@@ -223,10 +209,10 @@ export default function Projelendirme() {
                     </div>
 
                     <div className="mb-8">
-                      <h4 className="text-lg font-semibold mb-3 text-gray-800">{t('projects.technologiesUsed')}</h4>
+                      <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white">{t('projects.technologiesUsed')}</h4>
                       <div className="flex flex-wrap gap-2">
                         {service.technologies.map((tech, idx) => (
-                          <span key={idx} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
+                          <span key={idx} className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm">
                             {tech}
                           </span>
                         ))}
@@ -247,7 +233,7 @@ export default function Projelendirme() {
         </section>
 
         {/* Process Section */}
-        <section className="py-24 bg-gradient-to-br from-blue-50 to-purple-50">
+        <section className="py-24 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
           <div className="container mx-auto px-6">
             <motion.div
               className="text-center mb-16"
@@ -256,10 +242,10 @@ export default function Projelendirme() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                 Çalışma Sürecimiz
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Projelerinizi başarıyla tamamlamak için izlediğimiz adımlar
               </p>
             </motion.div>
@@ -268,7 +254,7 @@ export default function Projelendirme() {
               {processSteps.map((step, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -277,8 +263,8 @@ export default function Projelendirme() {
                   <div className="text-center">
                     <div className="flex justify-center mb-4 text-blue-600">{step.icon}</div>
                     <div className="text-3xl font-bold text-blue-600 mb-4">{step.step}</div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-800">{step.title}</h3>
-                    <p className="text-gray-600 mb-4">{step.description}</p>
+                    <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{step.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">{step.description}</p>
                     <div className="text-sm text-blue-600 font-semibold">{step.duration}</div>
                   </div>
                 </motion.div>
@@ -288,7 +274,7 @@ export default function Projelendirme() {
         </section>
 
         {/* Why Choose Us */}
-        <section className="py-24 bg-white">
+        <section className="py-24 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-6">
             <motion.div
               className="text-center mb-16"
@@ -297,10 +283,10 @@ export default function Projelendirme() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                 Neden Bizi Seçmelisiniz?
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Projelerinizi başarıyla tamamlamak için sunduğumuz avantajlar
               </p>
             </motion.div>
@@ -349,8 +335,8 @@ export default function Projelendirme() {
                     }`}>
                       {advantage.icon}
                     </div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-800">{advantage.title}</h3>
-                    <p className="text-gray-600">{advantage.description}</p>
+                    <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{advantage.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{advantage.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -359,7 +345,7 @@ export default function Projelendirme() {
         </section>
 
         {/* Technologies */}
-        <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
+        <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
           <div className="container mx-auto px-6">
             <motion.div
               className="text-center mb-16"
@@ -368,10 +354,10 @@ export default function Projelendirme() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                 Kullandığımız Teknolojiler
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 En güncel ve güvenilir teknolojilerle projelerinizi geliştiriyoruz
               </p>
             </motion.div>
@@ -393,15 +379,15 @@ export default function Projelendirme() {
               ].map((tech, index) => (
                 <motion.div
                   key={index}
-                  className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                  className="flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.05 }}
                 >
                   <div className="text-3xl mb-3">{tech.icon}</div>
-                  <span className="text-sm font-semibold text-gray-700 mb-1">{tech.name}</span>
-                  <span className="text-xs text-gray-500">{tech.category}</span>
+                  <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">{tech.name}</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">{tech.category}</span>
                 </motion.div>
               ))}
             </div>
@@ -440,14 +426,8 @@ export default function Projelendirme() {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <Link 
-                  href="/iletisim"
-                  className="bg-white text-blue-600 px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  {t('projects.freeConsultation')}
-                </Link>
-                <Link 
                   href="/urunler"
-                  className="border-2 border-white text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300"
+                  className="bg-white text-blue-600 px-10 py-4 rounded-xl font-semibold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                 >
                   {t('projects.viewProducts')}
                 </Link>

@@ -173,18 +173,11 @@ export default function Home() {
                     transition={{ duration: 0.8, delay: 1 }}
                   >
                     <Link 
-                      href="/iletisim"
+                      href="/projelendirme"
                       className="btn-primary flex items-center justify-center space-x-2 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
                     >
-                      <span>{t('home.freeConsultation')}</span>
-                      <FiArrowRight className="w-5 h-5" />
-                    </Link>
-                    <Link 
-                      href="/projelendirme"
-                      className="btn-secondary flex items-center justify-center space-x-2 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
-                    >
-                      <FiPlay className="w-5 h-5" />
                       <span>{t('home.viewProjects')}</span>
+                      <FiArrowRight className="w-5 h-5" />
                     </Link>
                   </motion.div>
                 </motion.div>
@@ -210,7 +203,7 @@ export default function Home() {
                             <h3 className="font-semibold text-sm md:text-base mb-1">{t('home.webPages')}</h3>
                             <p className="text-xs md:text-sm opacity-90">{t('home.modernDesign')}</p>
                           </div>
-                          <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
+                          <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
                             <FiShoppingCart className="text-2xl md:text-3xl mb-2" />
                             <h3 className="font-semibold text-sm md:text-base mb-1">{t('home.ecommerce')}</h3>
                             <p className="text-xs md:text-sm opacity-90">{t('home.secureShopping')}</p>
@@ -222,12 +215,12 @@ export default function Home() {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 1.4 }}
                         >
-                          <div className="bg-gradient-to-br from-pink-500 to-pink-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
+                          <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
                             <FiSmartphone className="text-2xl md:text-3xl mb-2" />
                             <h3 className="font-semibold text-sm md:text-base mb-1">{t('home.mobileApp')}</h3>
                             <p className="text-xs md:text-sm opacity-90">{t('home.everyPlatform')}</p>
                           </div>
-                          <div className="bg-gradient-to-br from-green-500 to-green-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
+                          <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-4 md:p-6 rounded-2xl text-white shadow-lg card-hover">
                             <FiBookOpen className="text-2xl md:text-3xl mb-2" />
                             <h3 className="font-semibold text-sm md:text-base mb-1">{t('home.education')}</h3>
                             <p className="text-xs md:text-sm opacity-90">{t('home.mobildersSchoolroute')}</p>
@@ -246,9 +239,9 @@ export default function Home() {
         <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-4xl mx-auto">
               <motion.div
-                className="text-center mb-12 md:mb-16"
+                className="text-center mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -270,127 +263,16 @@ export default function Home() {
                 <p className="text-xl sm:text-2xl md:text-3xl mb-4 opacity-90">
                   {t('home.schoolrouteSubtitle')}
                 </p>
-                <p className="text-lg sm:text-xl max-w-4xl mx-auto opacity-80 leading-relaxed">
+                <p className="text-lg sm:text-xl max-w-4xl mx-auto opacity-80 leading-relaxed mb-8">
                   {t('home.schoolrouteDesc')}
                 </p>
-              </motion.div>
-
-              {/* Features Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
-                {[
-                  { key: 'schoolrouteFeature1', icon: FiSmartphone },
-                  { key: 'schoolrouteFeature2', icon: FiMap },
-                  { key: 'schoolrouteFeature3', icon: FiBell },
-                  { key: 'schoolrouteFeature4', icon: FiAlertTriangle },
-                  { key: 'schoolrouteFeature5', icon: FiSettings },
-                ].map((feature, index) => {
-                  const Icon = feature.icon;
-                  return (
-                    <motion.div
-                      key={index}
-                      className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20"
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                    >
-                      <div className="mb-4 flex justify-center">
-                        <Icon className="w-12 h-12 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold mb-2">{t(`home.${feature.key}`)}</h3>
-                      <p className="text-sm opacity-90 leading-relaxed">{t(`home.${feature.key}Desc`)}</p>
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-              {/* Financial Model Section */}
-              <motion.div
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-white/20 mb-12"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-                  {t('home.schoolrouteFinancialTitle')}
-                </h3>
-                <p className="text-lg mb-8 text-center opacity-90 max-w-3xl mx-auto">
-                  {t('home.schoolrouteFinancialDesc')}
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    { key: 'schoolrouteFinancial1', icon: FiDollarSign },
-                    { key: 'schoolrouteFinancial2', icon: FiUsers },
-                    { key: 'schoolrouteFinancial3', icon: FiBarChart },
-                  ].map((item, index) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={index} className="text-center">
-                        <div className="mb-4 flex justify-center">
-                          <Icon className="w-16 h-16 text-white" />
-                        </div>
-                        <h4 className="text-xl font-bold mb-2">{t(`home.${item.key}`)}</h4>
-                        <p className="text-sm opacity-90">{t(`home.${item.key}Desc`)}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-
-              {/* Reporting Section */}
-              <motion.div
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-white/20 mb-12"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-                  {t('home.schoolrouteReportingTitle')}
-                </h3>
-                <p className="text-lg mb-8 text-center opacity-90 max-w-3xl mx-auto">
-                  {t('home.schoolrouteReportingDesc')}
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {[
-                    { key: 'schoolrouteReporting1', icon: FiUserCheck },
-                    { key: 'schoolrouteReporting2', icon: FiClock },
-                    { key: 'schoolrouteReporting3', icon: FiFileText },
-                  ].map((item, index) => {
-                    const Icon = item.icon;
-                    return (
-                      <div key={index} className="text-center">
-                        <div className="mb-4 flex justify-center">
-                          <Icon className="w-16 h-16 text-white" />
-                        </div>
-                        <h4 className="text-xl font-bold mb-2">{t(`home.${item.key}`)}</h4>
-                        <p className="text-sm opacity-90">{t(`home.${item.key}Desc`)}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-
-              {/* Why SchoolRoute */}
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                  {t('home.schoolrouteWhyTitle')}
-                </h3>
-                <p className="text-lg md:text-xl max-w-4xl mx-auto opacity-90 leading-relaxed mb-8">
-                  {t('home.schoolrouteWhyDesc')}
-                </p>
                 <Link
-                  href="/urunler#schoolroute"
+                  href="https://schoolroute.net/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg"
                 >
-                  <span>{t('home.viewDetails')}</span>
+                  <span>İncele</span>
                   <FiArrowRight className="w-5 h-5" />
                 </Link>
               </motion.div>
@@ -432,36 +314,29 @@ export default function Home() {
                   title: t('home.brandDesignsTitle'),
                   description: t('home.brandDesignsDesc'),
                   icon: <FiStar className="w-8 h-8" />,
-                  gradient: "from-purple-500 to-purple-600",
+                  gradient: "from-blue-500 to-blue-600",
                   features: [t('home.logoDesign'), t('home.corporateIdentity'), t('home.visualMaterials')]
                 },
                 {
                   title: t('home.ecommerceServicesTitle'),
                   description: t('home.ecommerceServicesDesc'),
                   icon: <FiShoppingCart className="w-8 h-8" />,
-                  gradient: "from-pink-500 to-pink-600",
+                  gradient: "from-blue-500 to-blue-600",
                   features: [t('home.onlineStore'), t('home.paymentSystems'), t('home.inventoryManagement')]
                 },
                 {
                   title: t('home.customSoftwareTitle'),
                   description: t('home.customSoftwareDesc'),
                   icon: <FiCode className="w-8 h-8" />,
-                  gradient: "from-green-500 to-green-600",
+                  gradient: "from-blue-500 to-blue-600",
                   features: [t('home.customDevelopment'), t('home.processAutomation'), t('home.efficiencyIncrease')]
                 },
                 {
                   title: t('home.webToMobileTitle'),
                   description: t('home.webToMobileDesc'),
                   icon: <FiSmartphone className="w-8 h-8" />,
-                  gradient: "from-orange-500 to-orange-600",
+                  gradient: "from-blue-500 to-blue-600",
                   features: [t('home.mobileCompatibility'), t('home.pwaSupport'), t('home.crossPlatform')]
-                },
-                {
-                  title: t('home.cmswebsite'),
-                  description: t('home.cmswebsiteDesc'),
-                  icon: <FiMonitor className="w-8 h-8" />,
-                  gradient: "from-indigo-500 to-indigo-600",
-                  features: [t('home.cmswebsiteFeature1'), t('home.cmswebsiteFeature2')]
                 }
               ].map((service, index) => (
                 <motion.div
@@ -494,7 +369,7 @@ export default function Home() {
         </section>
 
         {/* Navigasyon ve AI Teknolojileri */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-12 md:mb-16"
@@ -640,13 +515,25 @@ export default function Home() {
                         </li>
                       ))}
                     </ul>
-                    <Link 
-                      href={`/urunler#${product.title.toLowerCase()}`}
-                      className={`bg-gradient-to-r from-${product.color}-500 to-${product.color}-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block flex items-center justify-center space-x-2 w-full`}
-                    >
-                      <span>{t('home.viewDetails')}</span>
-                      <FiArrowRight className="w-5 h-5" />
-                    </Link>
+                    {product.title === t('home.schoolrouteTitle') ? (
+                      <Link 
+                        href="https://schoolroute.net/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`bg-gradient-to-r from-${product.color}-500 to-${product.color}-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block flex items-center justify-center space-x-2 w-full`}
+                      >
+                        <span>İncele</span>
+                        <FiArrowRight className="w-5 h-5" />
+                      </Link>
+                    ) : (
+                      <Link 
+                        href={`/urunler#${product.title.toLowerCase()}`}
+                        className={`bg-gradient-to-r from-${product.color}-500 to-${product.color}-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block flex items-center justify-center space-x-2 w-full`}
+                      >
+                        <span>{t('home.viewDetails')}</span>
+                        <FiArrowRight className="w-5 h-5" />
+                      </Link>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -784,51 +671,6 @@ export default function Home() {
                   </motion.div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.h2 
-                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                {t('home.ctaTitle1')} 
-                <span className="block bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">
-                  {t('home.ctaTitle2')}
-                </span>
-              </motion.h2>
-              
-              <motion.p 
-                className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                {t('home.ctaDescription')}
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <Link 
-                  href="/iletisim"
-                  className="btn-primary inline-flex items-center justify-center space-x-2 text-base sm:text-lg px-8 sm:px-10 py-4"
-                >
-                  <span>{t('home.getStarted')}</span>
-                  <FiArrowRight className="w-5 h-5" />
-                </Link>
-              </motion.div>
             </div>
           </div>
         </section>
