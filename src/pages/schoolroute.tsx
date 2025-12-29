@@ -53,12 +53,37 @@ export default function SchoolRoute() {
           </div>
         </motion.section>
 
-        {/* Introduction Section */}
+        {/* Visual Showcase Section */}
         <section className="py-16 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-6">
+            <div className="max-w-6xl mx-auto">
+              <motion.div
+                className="mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/scr.png"
+                    alt="SchoolRoute - Akıllı Personel ve Öğrenci Taşıma Yönetim Sistemi"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Introduction Section */}
+        <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <motion.p
-                className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8"
+                className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
