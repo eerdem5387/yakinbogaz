@@ -267,9 +267,7 @@ export default function Home() {
                   {t('home.schoolrouteDesc')}
                 </p>
                 <Link
-                  href="https://schoolroute.net/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/schoolroute"
                   className="inline-flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg"
                 >
                   <span>İncele</span>
@@ -517,9 +515,7 @@ export default function Home() {
                     </ul>
                     {product.title === t('home.schoolrouteTitle') ? (
                       <Link 
-                        href="https://schoolroute.net/"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/schoolroute"
                         className={`bg-gradient-to-r from-${product.color}-500 to-${product.color}-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-block flex items-center justify-center space-x-2 w-full`}
                       >
                         <span>İncele</span>

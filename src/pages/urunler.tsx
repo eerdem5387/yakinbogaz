@@ -318,9 +318,7 @@ export default function Urunler() {
                     {product.id === 'schoolroute' ? (
                       <div className="flex justify-start">
                         <Link 
-                          href="https://schoolroute.net/"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href="/schoolroute"
                           className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center justify-center space-x-2"
                         >
                           <span>İncele</span>
