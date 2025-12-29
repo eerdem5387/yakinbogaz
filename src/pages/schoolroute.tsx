@@ -317,9 +317,6 @@ export default function SchoolRoute() {
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
                   SchoolRoute'u Keşfedin
                 </h2>
-                <p className="text-xl mb-8 opacity-90">
-                  Daha fazla bilgi için resmi web sitesini ziyaret edin
-                </p>
                 <Link
                   href="https://schoolroute.net/"
                   target="_blank"
