@@ -326,7 +326,7 @@ export default function SchoolRoute() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg"
                 >
-                  <span>SchoolRoute.net'e Git</span>
+                  <span>SchoolRoute Web Sayfasını Ziyaret Edin</span>
                   <FiArrowRight className="w-5 h-5" />
                 </Link>
               </motion.div>
