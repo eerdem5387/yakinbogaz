@@ -147,12 +147,6 @@ export default function DijitalCozumler() {
                     
                     <div className="flex gap-3">
                       <Link 
-                        href="/iletisim"
-                        className={`bg-gradient-to-r ${service.gradient} text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex-1 text-center`}
-                      >
-                        {t('solutions.getQuote')}
-                      </Link>
-                      <Link 
                         href={`/projelendirme#${service.title.toLowerCase().replace(/\s+/g, '-')}`}
                         className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-xl font-semibold hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 flex-1 text-center"
                       >
