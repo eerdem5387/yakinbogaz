@@ -1,14 +1,39 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { motion } from "framer-motion";
 import Seo from '@/components/Seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { FiArrowRight, FiCheck, FiMapPin, FiBell, FiShield, FiTrendingUp, FiBarChart, FiUsers, FiClock, FiAlertCircle } from 'react-icons/fi';
+import { FiArrowRight, FiCheck, FiMapPin, FiBell, FiShield, FiTrendingUp, FiBarChart, FiUsers, FiClock, FiAlertCircle, FiPlay } from 'react-icons/fi';
 
 export default function SchoolRoute() {
   const { t } = useLanguage();
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const videoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!shouldLoadVideo || isVideoLoaded) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVideoLoaded(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: '50px' }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [shouldLoadVideo, isVideoLoaded]);
 
   return (
     <Layout>
@@ -78,8 +103,73 @@ export default function SchoolRoute() {
           </div>
         </section>
 
-        {/* Introduction Section */}
+        {/* Video Section */}
         <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+          <div className="container mx-auto px-6">
+            <div className="max-w-6xl mx-auto">
+              <motion.div
+                ref={videoRef}
+                className="relative"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                {!shouldLoadVideo ? (
+                  <div 
+                    className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl cursor-pointer group"
+                    onClick={() => setShouldLoadVideo(true)}
+                  >
+                    <div className="absolute inset-0 z-10 bg-black/40 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="bg-white/20 backdrop-blur-sm rounded-full p-6 mb-4 inline-block group-hover:scale-110 transition-transform">
+                          <FiPlay className="w-16 h-16 text-white ml-1" />
+                        </div>
+                        <p className="text-white text-lg font-semibold">SchoolRoute Tanıtım Videosu</p>
+                        <p className="text-white/80 text-sm mt-2">Videoyu izlemek için tıklayın</p>
+                      </div>
+                    </div>
+                    <Image
+                      src="https://vumbnail.com/1150437070.jpg"
+                      alt="SchoolRoute Tanıtım Videosu"
+                      fill
+                      className="object-cover"
+                      loading="lazy"
+                      onError={(e) => {
+                        // Fallback: Vimeo oEmbed API ile thumbnail al
+                        const target = e.target as HTMLImageElement;
+                        target.src = `https://i.vimeocdn.com/video/${1150437070}_1280.jpg`;
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                    {isVideoLoaded ? (
+                      <iframe
+                        className="w-full h-full"
+                        src="https://player.vimeo.com/video/1150437070?autoplay=1&title=0&byline=0&portrait=0"
+                        title="SchoolRoute Tanıtım Videosu"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        allowFullScreen
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                          <p className="text-gray-600 dark:text-gray-400">Video yükleniyor...</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Introduction Section */}
+        <section className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
               <motion.p
