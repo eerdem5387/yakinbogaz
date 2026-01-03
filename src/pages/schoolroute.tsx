@@ -426,7 +426,7 @@ export default function SchoolRoute() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + 0.5 }}
                           >
-                            {feature.images ? (
+                            {'images' in feature && feature.images ? (
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {feature.images.map((img: { src: string; alt: string }, imgIndex: number) => (
                                   <div
@@ -451,8 +451,8 @@ export default function SchoolRoute() {
                               <div className="rounded-xl overflow-hidden shadow-lg">
                                 <div className="relative w-full h-auto">
                                   <Image
-                                    src={feature.imageSrc || "/panel-canli-takip.png"}
-                                    alt={feature.imageAlt || "SchoolRoute Panel Görüntüsü"}
+                                    src={'imageSrc' in feature ? feature.imageSrc : "/panel-canli-takip.png"}
+                                    alt={'imageAlt' in feature ? feature.imageAlt : "SchoolRoute Panel Görüntüsü"}
                                     width={1200}
                                     height={800}
                                     className="w-full h-auto object-contain rounded-xl"
@@ -619,7 +619,7 @@ export default function SchoolRoute() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + 0.5 }}
                           >
-                            {feature.images ? (
+                            {'images' in feature && feature.images ? (
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {feature.images.map((img: { src: string; alt: string }, imgIndex: number) => (
                                   <div
@@ -644,8 +644,8 @@ export default function SchoolRoute() {
                               <div className="rounded-xl overflow-hidden shadow-lg">
                                 <div className="relative w-full h-auto">
                                   <Image
-                                    src={feature.imageSrc || "/panel-canli-takip.png"}
-                                    alt={feature.imageAlt || "SchoolRoute Panel Görüntüsü"}
+                                    src={'imageSrc' in feature ? feature.imageSrc : "/panel-canli-takip.png"}
+                                    alt={'imageAlt' in feature ? feature.imageAlt : "SchoolRoute Panel Görüntüsü"}
                                     width={1200}
                                     height={800}
                                     className="w-full h-auto object-contain rounded-xl"
