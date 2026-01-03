@@ -5,7 +5,7 @@ import Seo from '@/components/Seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { FiArrowRight, FiCheck, FiMapPin, FiBell, FiShield, FiTrendingUp, FiBarChart, FiUsers, FiClock, FiAlertCircle, FiPlay } from 'react-icons/fi';
+import { FiArrowRight, FiCheck, FiMapPin, FiBell, FiShield, FiTrendingUp, FiBarChart, FiUsers, FiClock, FiAlertCircle, FiPlay, FiMonitor, FiUserCheck, FiNavigation, FiFileText, FiDollarSign, FiSmartphone, FiEye, FiMessageCircle, FiLock } from 'react-icons/fi';
 
 export default function SchoolRoute() {
   const { t } = useLanguage();
@@ -221,14 +221,41 @@ export default function SchoolRoute() {
         <section className="py-16 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">
-              <motion.p
-                className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed"
+              <motion.h2
+                className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
+                SCHOOLROUTE; YENİ NESİL ARAÇ/ÖĞRENCİ TAKİP SİSTEMİ
+              </motion.h2>
+              <motion.p
+                className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
                 SchoolRoute, sabit rotalı taşımacılık operasyonlarında; güvenlik, izlenebilirlik ve verimliliği bir araya getiren hibrit (Mobil & Masaüstü) bir takip ve raporlama ekosistemidir. Geleneksel takip sistemlerinin aksine, donanım maliyetlerini ortadan kaldırarak yazılım tabanlı uçtan uca bir çözüm sunar.
+              </motion.p>
+              <motion.p
+                className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                SchoolRoute, mobil telefon aracılığıyla servis araçlarının ve kullanıcılarının hizmet alımı, kullanımı ve lokasyonlarını yeni nesil teknolojilerle takip eder.
+              </motion.p>
+              <motion.p
+                className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Şirket, kullanıcı ve sürücü için kolaylık ve güvenilirlik sağlar.
               </motion.p>
             </div>
           </div>
@@ -294,35 +321,188 @@ export default function SchoolRoute() {
               </motion.h2>
 
               <div className="space-y-6">
+                {/* Şirket/Okul İçin */}
+                <motion.div
+                  className="mb-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Şirket/Okul İçin</h3>
+                </motion.div>
                 {[
                   {
+                    icon: <FiMonitor className="w-6 h-6" />,
+                    title: "Tüm Araçların Konumlarının Aynı Anda Tek Ekranda Takibi",
+                    description: "Servis şirketi veya okul gibi yönetici platformları, tüm araçları aynı anda tek ekranda görebilir. Gittikleri yolu ve içindeki öğrenci/kullanıcıyı anında görebilir. Tüm seferler kontrolü altında olur.",
+                    showImage: true,
+                    imageSrc: "/panel-canli-takip.png",
+                    imageAlt: "Tüm Araçların Konumlarının Aynı Anda Tek Ekranda Takibi - SchoolRoute Panel Görüntüsü"
+                  },
+                  {
+                    icon: <FiUserCheck className="w-6 h-6" />,
+                    title: "Sürücü Kimliklerinin Onaylanması",
+                    description: "Araçların yetkisiz kişiler tarafından kullanılıp kullanılmadığını öğrenir, aksi durumlarda uygulama tarafından uyarılır. Aracı o an hangi personelin kullandığının tespiti yapılır.",
+                    showImage: true,
+                    imageSrc: "/suruculer.png",
+                    imageAlt: "Sürücü Kimliklerinin Onaylanması - SchoolRoute Sürücü Yönetim Paneli"
+                  },
+                  {
+                    icon: <FiNavigation className="w-6 h-6" />,
+                    title: "Rota Sapmalarının Anlık Tespiti",
+                    description: "Araçların belirlenen rotadan sapıp sapmadığı merkezden ve ilgili taraflardan anlık olarak izlenebilir. Rotasından çıkan aracı görür ve müdahale edebilir."
+                  },
+                  {
+                    icon: <FiFileText className="w-6 h-6" />,
+                    title: "Araç - Veli - Öğrenci Raporlamaları",
+                    description: "Gün, hafta, ay, yıl periyotlu rota, süre, kullanım ve ücretlendirme raporlarını anında alabilir. Operasyonel şeffaflık ve detaylı analiz imkanı sunar.",
+                    showImage: true,
+                    imageSrc: "/raporlar.png",
+                    imageAlt: "Araç - Veli - Öğrenci Raporlamaları - SchoolRoute Raporlama Paneli"
+                  },
+                  {
                     icon: <FiShield className="w-6 h-6" />,
-                    title: "Donanımsız Takip Teknolojisi",
-                    description: "Araca özel herhangi bir GPS cihazı veya ek donanım takılmasına gerek duymaz. Tamamen sürücü ve veli/yolcu mobil uygulamaları üzerinden entegre çalışır."
-                  },
-                  {
-                    icon: <FiMapPin className="w-6 h-6" />,
-                    title: "Anlık Harita ve Rota Takibi",
-                    description: "Araçların belirlenen rotadan sapıp sapmadığı, hız sınırlarına uyup uymadığı merkezden ve ilgili taraflardan anlık olarak izlenebilir."
-                  },
-                  {
-                    icon: <FiBell className="w-6 h-6" />,
-                    title: "Tam Entegre Bilgilendirme",
-                    description: "Öğrencinin/yolcunun araca biniş anı, aracın mevcut konumu ve varış noktasına teslimatı; okul yönetimi, servis şirketi ve veli üçgeninde eş zamanlı paylaşılır."
-                  },
-                  {
-                    icon: <FiAlertCircle className="w-6 h-6" />,
-                    title: "Acil Durum Yönetimi",
-                    description: "Beklenmedik durumlarda veya rota dışı hareketlerde sistem otomatik olarak uyarı mekanizmalarını devreye sokar."
+                    title: "Ek Cihaz ve Maliyet Gerektirmeyen Güvenilir Sistem",
+                    description: "SchoolRoute araçlara ek GPS modülleri ve cihazları gerektirmez. Mobil telefon tanımlamaları sayesinde sıfır cihaz maliyeti sunar. Araca özel herhangi bir GPS cihazı veya ek donanım takılmasına gerek duymaz."
                   },
                   {
                     icon: <FiUsers className="w-6 h-6" />,
-                    title: "White-Label Özelleştirme",
-                    description: "Yazılım, hizmet alan firmanın kendi logosu, renkleri ve kurumsal kimliği ile markalanır. Bu sayede firmalar, müşterilerine kendi özel yazılımlarını sunuyormuş gibi prestijli bir deneyim yaşatır."
+                    title: "Kolay Yönetim Arayüzleri",
+                    description: "Arayüzler, yönetici, sürücü ve velilerin basitçe kullanımına ve az zaman ayırarak hizmetten faydalanmasına uygun tasarlanmıştır."
+                  },
+                  {
+                    icon: <FiDollarSign className="w-6 h-6" />,
+                    title: "Gelir Getiren Ücretlendirme Sistemi",
+                    description: "SchoolRoute şirket veya okul için ek maliyet getirmeyecek şekilde ücretlendirilecek şekilde uygulandığı için kazançlı tek uygulamadır. Sistem kurumlar için bir maliyet kalemi olmaktan çıkıp, katma değerli bir gelir kaynağına dönüşür."
+                  },
+                  {
+                    icon: <FiSmartphone className="w-6 h-6" />,
+                    title: "Mobil Uygulama ile Kendi Markanızı Kullanın",
+                    description: "Uygulamada, kendi marka ve logonuz sağlanır, marka değerinize katkıda bulunulur. Yazılım, hizmet alan firmanın kendi logosu, renkleri ve kurumsal kimliği ile markalanır."
                   }
                 ].map((feature, index) => (
                   <motion.div
-                    key={index}
+                    key={`company-${index}`}
+                    className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
+                    initial={{ opacity: 0, x: -50, scale: 0.95 }}
+                    whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-3 rounded-lg flex-shrink-0">
+                        {feature.icon}
+                      </div>
+                      <div>
+                        <motion.h3 
+                          className="text-xl font-bold mb-2 text-gray-900 dark:text-white"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 + 0.2 }}
+                        >
+                          {feature.title}
+                        </motion.h3>
+                        <motion.p 
+                          className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 + 0.3 }}
+                        >
+                          {feature.description}
+                        </motion.p>
+                        {feature.showImage && (
+                          <motion.div
+                            className="mt-4"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 + 0.5 }}
+                          >
+                            {feature.images ? (
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {feature.images.map((img: { src: string; alt: string }, imgIndex: number) => (
+                                  <div
+                                    key={imgIndex}
+                                    className="rounded-xl overflow-hidden shadow-lg"
+                                  >
+                                    <div className="relative w-full h-auto">
+                                      <Image
+                                        src={img.src}
+                                        alt={img.alt}
+                                        width={1200}
+                                        height={800}
+                                        className="w-full h-auto object-contain rounded-xl"
+                                        quality={85}
+                                        loading="lazy"
+                                      />
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <div className="rounded-xl overflow-hidden shadow-lg">
+                                <div className="relative w-full h-auto">
+                                  <Image
+                                    src={feature.imageSrc || "/panel-canli-takip.png"}
+                                    alt={feature.imageAlt || "SchoolRoute Panel Görüntüsü"}
+                                    width={1200}
+                                    height={800}
+                                    className="w-full h-auto object-contain rounded-xl"
+                                    quality={85}
+                                    loading="lazy"
+                                  />
+                                </div>
+                              </div>
+                            )}
+                          </motion.div>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+
+                {/* Veli İçin */}
+                <motion.div
+                  className="mb-8 mt-12"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Veli İçin</h3>
+                </motion.div>
+                {[
+                  {
+                    icon: <FiEye className="w-6 h-6" />,
+                    title: "Araç Gelmeden, Geldiğinde ve Öğrenci Binip Okula Teslim Edildiğinde Takip Edilebilme Yetenekleri",
+                    description: "Öğrencinin/yolcunun araca biniş anı, aracın mevcut konumu ve varış noktasına teslimatı; okul yönetimi, servis şirketi ve veli üçgeninde eş zamanlı paylaşılır. Öğrencinin araca ne zaman binebileceği, telefon yoluyla haritada görüneceği için, erken gönderme veya geç kalma durumlarının önüne geçilir, sürücü hataları kayıt altına alınır."
+                  },
+                  {
+                    icon: <FiBell className="w-6 h-6" />,
+                    title: "Geç Kalma Binmeme Durumlarının Anlık Haber Verilebilme",
+                    description: "Öğrencinin servis kullanımında aksama olması halinde anlık bildirim alma yoluyla bildirilir. Öğrencinin konumu gelmeden inmesi halinde veliye bilgilendirme yapılır. Beklenmedik durumlarda veya rota dışı hareketlerde sistem otomatik olarak uyarı mekanizmalarını devreye sokar."
+                  },
+                  {
+                    icon: <FiLock className="w-6 h-6" />,
+                    title: "Sürücü Kimliği Güvenilirliği",
+                    description: "Aracı belirli sürücü dışında başka birisinin kullanması halinde şirket ve veli bu durumu görür ve yasal delil elde eder."
+                  },
+                  {
+                    icon: <FiSmartphone className="w-6 h-6" />,
+                    title: "Mobil Uygulama Sayesinde Evden, İşten Her Yerden Takip Edebilme Kabiliyeti",
+                    description: "Mobil uygulama sayesinde cep telefonuyla, evden, işten, her yerden takip edebilir. Kilit ve uygulama ekranından bildirimleri kaçırmadan görebilir. Mesajların arasında acil durumlar kaybolmaz."
+                  }
+                ].map((feature, index) => (
+                  <motion.div
+                    key={`parent-${index}`}
                     className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
                     initial={{ opacity: 0, x: -50, scale: 0.95 }}
                     whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -357,6 +537,126 @@ export default function SchoolRoute() {
                         >
                           {feature.description}
                         </motion.p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+
+                {/* Sürücü İçin */}
+                <motion.div
+                  className="mb-8 mt-12"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Sürücü İçin</h3>
+                </motion.div>
+                {[
+                  {
+                    icon: <FiShield className="w-6 h-6" />,
+                    title: "Veli Öğrenci Kaynaklı Hataların Hukuksal Olarak Delillendirilmesi",
+                    description: "Velilerin veya öğrencilerin kendi iradeleriyle gecikmesi, gelmemesi durumları sistem tarafından sürücünün üzerinden sorumluluğu kaldıracak şekilde delillendirilir."
+                  },
+                  {
+                    icon: <FiMapPin className="w-6 h-6" />,
+                    title: "Öğrenci Pozisyonlarının Önceden Öğrenilerek Hareket Oluşturulabilmesi",
+                    description: "Veliler veya öğrencilerin, binmeden konumu, durumu veya servis kullanıp kullanmayacakları önceden harita üzerinde kendilerine bildirildiği için zaman kaybı olmaz. Sürücünün kullanıcıların gelip gelmediğini anında işaretlemesi işini kolaylaştırır.",
+                    showImage: true,
+                    images: [
+                      {
+                        src: "/gercek-surus.png",
+                        alt: "Gerçek Sürüş Ekranı - SchoolRoute Sürücü Uygulaması"
+                      },
+                      {
+                        src: "/ogrenci-listesi.png",
+                        alt: "Öğrenci Listesi - SchoolRoute Sürücü Uygulaması"
+                      }
+                    ]
+                  }
+                ].map((feature, index) => (
+                  <motion.div
+                    key={`driver-${index}`}
+                    className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
+                    initial={{ opacity: 0, x: -50, scale: 0.95 }}
+                    whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      duration: 0.6, 
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 100
+                    }}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-3 rounded-lg flex-shrink-0">
+                        {feature.icon}
+                      </div>
+                      <div>
+                        <motion.h3 
+                          className="text-xl font-bold mb-2 text-gray-900 dark:text-white"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 + 0.2 }}
+                        >
+                          {feature.title}
+                        </motion.h3>
+                        <motion.p 
+                          className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 + 0.3 }}
+                        >
+                          {feature.description}
+                        </motion.p>
+                        {feature.showImage && (
+                          <motion.div
+                            className="mt-4"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 + 0.5 }}
+                          >
+                            {feature.images ? (
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {feature.images.map((img: { src: string; alt: string }, imgIndex: number) => (
+                                  <div
+                                    key={imgIndex}
+                                    className="rounded-xl overflow-hidden shadow-lg"
+                                  >
+                                    <div className="relative w-full h-auto">
+                                      <Image
+                                        src={img.src}
+                                        alt={img.alt}
+                                        width={1200}
+                                        height={800}
+                                        className="w-full h-auto object-contain rounded-xl"
+                                        quality={85}
+                                        loading="lazy"
+                                      />
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <div className="rounded-xl overflow-hidden shadow-lg">
+                                <div className="relative w-full h-auto">
+                                  <Image
+                                    src={feature.imageSrc || "/panel-canli-takip.png"}
+                                    alt={feature.imageAlt || "SchoolRoute Panel Görüntüsü"}
+                                    width={1200}
+                                    height={800}
+                                    className="w-full h-auto object-contain rounded-xl"
+                                    quality={85}
+                                    loading="lazy"
+                                  />
+                                </div>
+                              </div>
+                            )}
+                          </motion.div>
+                        )}
                       </div>
                     </div>
                   </motion.div>
