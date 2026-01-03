@@ -426,9 +426,9 @@ export default function SchoolRoute() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + 0.5 }}
                           >
-                            {'images' in feature && feature.images ? (
+                            {'images' in feature && Array.isArray(feature.images) && feature.images.length > 0 ? (
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {feature.images.map((img: { src: string; alt: string }, imgIndex: number) => (
+                                {(feature.images as Array<{ src: string; alt: string }>).map((img: { src: string; alt: string }, imgIndex: number) => (
                                   <div
                                     key={imgIndex}
                                     className="rounded-xl overflow-hidden shadow-lg"
@@ -619,9 +619,9 @@ export default function SchoolRoute() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 + 0.5 }}
                           >
-                            {'images' in feature && feature.images ? (
+                            {'images' in feature && Array.isArray(feature.images) && feature.images.length > 0 ? (
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {feature.images.map((img: { src: string; alt: string }, imgIndex: number) => (
+                                {(feature.images as Array<{ src: string; alt: string }>).map((img: { src: string; alt: string }, imgIndex: number) => (
                                   <div
                                     key={imgIndex}
                                     className="rounded-xl overflow-hidden shadow-lg"
