@@ -451,8 +451,8 @@ export default function SchoolRoute() {
                               <div className="rounded-xl overflow-hidden shadow-lg">
                                 <div className="relative w-full h-auto">
                                   <Image
-                                    src={'imageSrc' in feature ? feature.imageSrc : "/panel-canli-takip.png"}
-                                    alt={'imageAlt' in feature ? feature.imageAlt : "SchoolRoute Panel Görüntüsü"}
+                                    src={'imageSrc' in feature && typeof feature.imageSrc === 'string' ? feature.imageSrc : "/panel-canli-takip.png"}
+                                    alt={'imageAlt' in feature && typeof feature.imageAlt === 'string' ? feature.imageAlt : "SchoolRoute Panel Görüntüsü"}
                                     width={1200}
                                     height={800}
                                     className="w-full h-auto object-contain rounded-xl"
@@ -644,8 +644,8 @@ export default function SchoolRoute() {
                               <div className="rounded-xl overflow-hidden shadow-lg">
                                 <div className="relative w-full h-auto">
                                   <Image
-                                    src={'imageSrc' in feature ? feature.imageSrc : "/panel-canli-takip.png"}
-                                    alt={'imageAlt' in feature ? feature.imageAlt : "SchoolRoute Panel Görüntüsü"}
+                                    src={'imageSrc' in feature && typeof feature.imageSrc === 'string' ? feature.imageSrc : "/panel-canli-takip.png"}
+                                    alt={'imageAlt' in feature && typeof feature.imageAlt === 'string' ? feature.imageAlt : "SchoolRoute Panel Görüntüsü"}
                                     width={1200}
                                     height={800}
                                     className="w-full h-auto object-contain rounded-xl"
